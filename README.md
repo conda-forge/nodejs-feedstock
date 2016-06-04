@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/nodejs-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/nodejs-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/nodejs-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/nodejs-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/nodejs-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/nodejs-feedstock/branch/master)
