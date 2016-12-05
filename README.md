@@ -11,6 +11,18 @@ Summary: a platform for easily building fast, scalable network applications
 
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/nodejs-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/nodejs-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/nodejs-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/nodejs-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/nodejs-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/nodejs-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/nodejs/badges/version.svg)](https://anaconda.org/conda-forge/nodejs)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/nodejs/badges/downloads.svg)](https://anaconda.org/conda-forge/nodejs)
+
 Installing nodejs
 =================
 
@@ -66,18 +78,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/nodejs-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/nodejs-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/nodejs-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/nodejs-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/nodejs-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/nodejs-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/nodejs/badges/version.svg)](https://anaconda.org/conda-forge/nodejs)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/nodejs/badges/downloads.svg)](https://anaconda.org/conda-forge/nodejs)
 
 
 Updating nodejs-feedstock
