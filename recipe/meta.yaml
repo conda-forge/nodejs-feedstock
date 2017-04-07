@@ -15,6 +15,7 @@ build:
 requirements:
   build:
     # node's build scripts find and use MSVC 2015, regardless of conda's setting.
+    - toolchain
     - vs2015_runtime  # [win]
     - python          2.7.*
     - gcc             # [linux]
