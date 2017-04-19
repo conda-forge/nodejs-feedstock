@@ -11,6 +11,8 @@ source:
 
 build:
   number: 0
+  ignore_prefix_files:
+    - bin/node
 
 requirements:
   build:
