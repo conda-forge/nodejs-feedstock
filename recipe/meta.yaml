@@ -1,4 +1,4 @@
-{% set version = "6.6.0" %}
+{% set version = "6.10.2" %}
 
 package:
   name: nodejs
@@ -7,15 +7,17 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-  sha256: 11b957de855a392ceaa8b300ec66236d6f9c6baa184837d00bdaba2da4aefe91
+  sha256: 9b897dd6604d50ae5fff25fd14b1c4035462d0598735799e0cfb4f17cb6e0d19
 
 build:
   number: 0
-  skip: True  # [not py27]
+  ignore_prefix_files:
+    - bin/node
 
 requirements:
   build:
     # node's build scripts find and use MSVC 2015, regardless of conda's setting.
+    - toolchain
     - vs2015_runtime  # [win]
     - python          2.7.*
     - gcc             # [linux]
