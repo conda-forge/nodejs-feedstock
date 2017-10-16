@@ -1,4 +1,4 @@
-{% set version = "6.11.0" %}
+{% set version = "8.4.0" %}
 
 package:
   name: nodejs
@@ -44,3 +44,4 @@ extra:
     - minrk
     - msarahan
     - pelson
+    - abhi18av
