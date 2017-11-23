@@ -8,4 +8,4 @@ call vcbuild.bat nosign release %PLATFORM%
 
 COPY Release\node.exe %LIBRARY_BIN%\node.exe
 
-%LIBRARY_BIN%\node.exe deps\npm\cli.js install npm -gf
+%LIBRARY_BIN%\node.exe deps\npm\bin\npm-cli.js install npm -gf
