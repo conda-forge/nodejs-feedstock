@@ -10,6 +10,7 @@ COPY Release\node.exe %PREFIX%\node.exe
 
 %PREFIX%\node.exe -v
 %PREFIX%\node.exe deps\npm\bin\npm-cli.js install npm -gf
-REM dedupe to avoid too-long path issues on Windows
-%PREFIX%\npm.cmd dedupe
 %PREFIX%\npm.cmd version
+REM dedupe npm to avoid too-long path issues on Windows
+cd %PREFIX%\node_modules\npm
+%PREFIX%\npm.cmd dedupe
