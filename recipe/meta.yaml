@@ -1,4 +1,4 @@
-{% set version = "8.8.1" %}
+{% set version = "8.9.1" %}
 
 package:
   name: nodejs
@@ -7,7 +7,7 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-  sha256: 1725bbbe623d6a13ee14522730dfc90eac1c9ebe9a0a8f4c3322a402dd7e75a2
+  sha256: 32491b7fcc4696b2cdead45c47e52ad16bbed8f78885d32e873952fee0f971e1
 
 build:
   number: 0
@@ -37,6 +37,7 @@ test:
 about:
   home: https://nodejs.org/
   license: MIT
+  license_file: LICENSE
   summary: a platform for easily building fast, scalable network applications
 
 extra:
