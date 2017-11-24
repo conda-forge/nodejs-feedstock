@@ -6,10 +6,10 @@ if "%ARCH%"=="32" (
 
 call vcbuild.bat nosign release %PLATFORM%
 
-COPY Release\node.exe %LIBRARY_BIN%\node.exe
+COPY Release\node.exe %PREFIX%\node.exe
 
-%LIBRARY_BIN%\node.exe -v
-%LIBRARY_BIN%\node.exe deps\npm\bin\npm-cli.js install npm -gf
+%PREFIX%\node.exe -v
+%PREFIX%\node.exe deps\npm\bin\npm-cli.js install npm -gf
 REM dedupe to avoid too-long path issues on Windows
-%LIBRARY_BIN%\npm.cmd dedupe
-%LIBRARY_BIN%\npm.cmd version
+%PREFIX%\npm.cmd dedupe
+%PREFIX%\npm.cmd version
