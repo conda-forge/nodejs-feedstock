@@ -10,7 +10,7 @@ source:
   sha256: 05d31c82cabca32f2fe15a1a335899467796396efeca8bdcd5b86621fd2ee319
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
