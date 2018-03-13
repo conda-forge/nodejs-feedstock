@@ -1,4 +1,4 @@
-{% set version = "6.12.2" %}
+{% set version = "6.13.1" %}
 
 package:
   name: nodejs
@@ -7,7 +7,7 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-  sha256: 1bb1d3a033d69ccfa4051ffa79bedad9bcfd43bc0d4b2b6678c3e53883bfd6eb
+  sha256: 649374430815aaf425b7b60621a9b7b072a1584cebc676d3cbf0ee4b9bbd94ee
 
 build:
   number: 0
