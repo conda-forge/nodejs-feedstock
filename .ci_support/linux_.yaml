@@ -1,0 +1,4 @@
+c_compiler:
+- toolchain_c
+cxx_compiler:
+- toolchain_cxx
