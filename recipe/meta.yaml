@@ -21,6 +21,7 @@ requirements:
     - vs2015_runtime  # [win]
     - python          2.7.*
     - gcc             # [linux]
+    - nasm            # [win]
   run:
     - vs2015_runtime   # [win]
     - libgcc           # [linux]
