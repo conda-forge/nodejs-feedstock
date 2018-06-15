@@ -2,6 +2,7 @@
 # file, make changes to conda-forge.yml and/or recipe/meta.yaml, and run
 # "conda smithy rerender".
 
+image: Visual Studio 2017
 environment:
 
   BINSTAR_TOKEN:
