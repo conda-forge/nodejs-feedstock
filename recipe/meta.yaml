@@ -1,4 +1,4 @@
-{% set version = "9.11.1" %}
+{% set version = "10.5.0" %}
 
 package:
   name: nodejs
@@ -7,7 +7,7 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-  sha256: 62cc091b00e4f29e110e59c7f41645144c89eb513e250a96f96df2c3f74f50ee
+  sha256: 2b61828fd32e79ed3e6cb4781dfa0d61d03739e30da2f68b3bab63d7f92a6d8d
 
 build:
   number: 0
