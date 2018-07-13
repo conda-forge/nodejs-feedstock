@@ -1,4 +1,4 @@
 c_compiler:
-  - vs2017  # [win]
+  - vs2015  # [win]
 cxx_compiler:
-  - vs2017  # [win]
+  - vs2015  # [win]
