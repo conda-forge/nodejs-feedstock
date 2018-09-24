@@ -1,7 +1,4 @@
-c_compiler:
-- vs2015
-cxx_compiler:
-- vs2015
-zip_keys:
-- - c_compiler
-  - cxx_compiler
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
