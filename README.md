@@ -14,8 +14,7 @@ Summary: a platform for easily building fast, scalable network applications
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/nodejs-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/nodejs-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/nodejs-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/nodejs-feedstock)
+[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/nodejs-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/nodejs-feedstock)
 [![Windows](https://img.shields.io/appveyor/ci/conda-forge/nodejs-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/nodejs-feedstock/branch/master)
 
 Current release info
