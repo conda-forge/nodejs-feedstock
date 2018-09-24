@@ -21,9 +21,9 @@ requirements:
     - python 2.7.*
     - nasm  # [win]
   host:
-    - vs2015runtime  # [win]
+    - vs2015_runtime  # [win]
   run:
-    - vs2015runtime  # [win]
+    - vs2015_runtime  # [win]
 
 test:
   commands:
