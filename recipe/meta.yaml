@@ -10,21 +10,20 @@ source:
   sha256: 5584205b601a5bb0727eb5dd0c9824caf26ce1c02fd157d31e14b3a8765a0c0c
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
 requirements:
   build:
-    # node's build scripts find and use MSVC 2015, regardless of conda's setting.
-    - toolchain
+    - {{ compiler('c') }}  # [not win]
+    - {{ compiler('cxx') }}  # [not win]
+    - python 2.7.*
+    - nasm  # [win]
+  host:
     - vs2015_runtime  # [win]
-    - python          2.7.*
-    - gcc             # [linux]
-    - nasm            # [win]
   run:
-    - vs2015_runtime   # [win]
-    - libgcc           # [linux]
+    - vs2015_runtime  # [win]
 
 test:
   commands:
