@@ -1,4 +1,4 @@
-{% set version = "10.8.0" %}
+{% set version = "11.0.0" %}
 
 package:
   name: nodejs
@@ -7,12 +7,12 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-  sha256: 5584205b601a5bb0727eb5dd0c9824caf26ce1c02fd157d31e14b3a8765a0c0c
+  sha256: 1f7e67f8d713e6a0c3b786d3b3d2eb03b7825cfbed395a5a9565e3c606caea3d
   patches:
     - macosx-target.patch
 
 build:
-  number: 1001
+  number: 1000
   ignore_prefix_files:
     - bin/node
 
