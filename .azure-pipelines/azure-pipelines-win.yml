@@ -9,8 +9,8 @@ jobs:
         CONFIG: win_
   steps:
     # TODO: Fast finish on azure pipelines?
-    - script: |
-
+    - script: wmic logicaldisk get size,freespace,caption
+      displayName: disk usage
 
     - script: |
         choco install vcpython27 -fdv -y --debug
@@ -20,6 +20,7 @@ jobs:
     # Cywing's git breaks conda-build. (See https://github.com/conda-forge/conda-smithy-feedstock/pull/2.)
     # - script: rmdir C:\cygwin /s /q
     #   continueOnError: true
+
 
 
     - powershell: |
@@ -74,6 +75,9 @@ jobs:
 
     - script: conda.exe clean -tipsy
       displayName: conda clean
+
+    - script: wmic logicaldisk get size,freespace,caption
+      displayName: disk usage
 
     # Special cased version setting some more things!
     - script: |
