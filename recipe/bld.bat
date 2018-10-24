@@ -4,7 +4,7 @@ if "%ARCH%"=="32" (
   set PLATFORM=x64
 )
 
-call vcbuild.bat nosign release %PLATFORM%
+call vcbuild.bat release nosnapshot %PLATFORM%
 
 COPY Release\node.exe %PREFIX%\node.exe
 
