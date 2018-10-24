@@ -7,7 +7,11 @@ if "%ARCH%"=="32" (
 set "CFLAGS= -MD"
 set "CXXFLAGS= -MD"
 
+wmic logicaldisk get size,freespace,caption
+
 call vcbuild.bat nosign release %PLATFORM%
+
+wmic logicaldisk get size,freespace,caption
 
 COPY Release\node.exe %PREFIX%\node.exe
 
