@@ -1,0 +1,10 @@
+--- vcbuild.bat.orig	2018-10-25 10:48:57.000000000 +0200
++++ vcbuild.bat	2018-10-25 10:51:02.000000000 +0200
+@@ -166,7 +166,6 @@
+ if defined nosnapshot       set configure_flags=%configure_flags% --without-snapshot
+ if defined noetw            set configure_flags=%configure_flags% --without-etw& set noetw_msi_arg=/p:NoETW=1
+ if defined noperfctr        set configure_flags=%configure_flags% --without-perfctr& set noperfctr_msi_arg=/p:NoPerfCtr=1
+-if defined ltcg             set configure_flags=%configure_flags% --with-ltcg
+ if defined pch              set configure_flags=%configure_flags% --with-pch
+ if defined release_urlbase  set configure_flags=%configure_flags% --release-urlbase=%release_urlbase%
+ if defined download_arg     set configure_flags=%configure_flags% %download_arg%

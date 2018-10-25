@@ -9,7 +9,7 @@ set "CXXFLAGS= -MD"
 
 wmic logicaldisk get size,freespace,caption
 
-call vcbuild.bat nosign release %PLATFORM%
+call vcbuild.bat nosign no-cctest release %PLATFORM%
 
 wmic logicaldisk get size,freespace,caption
 
