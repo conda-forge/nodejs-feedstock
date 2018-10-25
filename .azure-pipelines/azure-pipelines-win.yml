@@ -81,7 +81,7 @@ jobs:
 
     # Special cased version setting some more things!
     - script: |
-        conda.exe build recipe -m .ci_support\%CONFIG%.yaml --quiet
+        conda.exe build recipe -m .ci_support\%CONFIG%.yaml --quiet --croot D:\conda-bld
       displayName: Build recipe (vs2008)
       env: {
         VS90COMNTOOLS: "C:\\Program Files (x86)\\Common Files\\Microsoft\\Visual C++ for Python\\9.0\\VC\\bin",
@@ -89,7 +89,7 @@ jobs:
       condition: contains(variables['CONFIG'], 'vs2008')
 
     - script: |
-        conda.exe build recipe -m .ci_support\%CONFIG%.yaml --quiet
+        conda.exe build recipe -m .ci_support\%CONFIG%.yaml --quiet --croot D:\conda-bld
       displayName: Build recipe
       condition: not(contains(variables['CONFIG'], 'vs2008'))
 
