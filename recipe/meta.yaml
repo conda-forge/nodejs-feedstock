@@ -10,6 +10,7 @@ source:
   sha256: c6552b95062f5e9f3a27da6fdb57914ab4b27a9aa2e783fb050791166554d059
   patches:
     - macosx-target.patch
+    - no-ltcg.patch
 
 build:
   number: 1000
