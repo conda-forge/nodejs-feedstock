@@ -7,7 +7,7 @@ if "%ARCH%"=="32" (
 set "CFLAGS= -MD"
 set "CXXFLAGS= -MD"
 
-call vcbuild.bat nosign release %PLATFORM%
+call vcbuild.bat nosign nosnapshot no-cctest release %PLATFORM%
 
 COPY Release\node.exe %PREFIX%\node.exe
 
