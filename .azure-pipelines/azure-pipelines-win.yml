@@ -18,7 +18,9 @@ jobs:
     # TODO: Fast finish on azure pipelines?
     - script: |
         ECHO ON
-        
+
+    - script: wmic logicaldisk get size,freespace,caption
+      displayName: disk usage
 
     - script: |
         choco install vcpython27 -fdv -y --debug
@@ -78,6 +80,9 @@ jobs:
       continueOnError: true
       displayName: remove strawberryperl
 
+    - script: wmic logicaldisk get size,freespace,caption
+      displayName: disk usage
+
     # Special cased version setting some more things!
     - script: |
         conda.exe build recipe -m .ci_support\%CONFIG%.yaml
@@ -93,6 +98,9 @@ jobs:
       env:
         PYTHONUNBUFFERED: 1
       condition: not(contains(variables['CONFIG'], 'vs2008'))
+
+    - script: wmic logicaldisk get size,freespace,caption
+      displayName: disk usage
 
     - script: |
         upload_package .\ .\recipe .ci_support\%CONFIG%.yaml
