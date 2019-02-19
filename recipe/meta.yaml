@@ -6,10 +6,12 @@ package:
 
 source:
   fn: node-v{{ version }}.tar.gz
-  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-  sha256: 45835c210955cd05cab259e664cc19a6f2748dbda6bc9e13edc9a2e8cc498770
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
+  sha256: 45835c210955cd05cab259e664cc19a6f2748dbda6bc9e13edc9a2e8cc498770  # [not win]
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
+  sha256: c39e711aebe678455fa74edf6d8f6184d6d93e20f160197799040a0c17005dba  # [win]
   patches:
-    - macosx-target.patch
+    - macosx-target.patch  # [not win]
 
 build:
   number: 0
@@ -20,8 +22,7 @@ requirements:
   build:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - python 2.7.*
-    - nasm  # [win]
+    - python 2.7.*  # [not win]
   host:
     - vs2015_runtime  # [win]
   run:
