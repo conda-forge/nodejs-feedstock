@@ -10,8 +10,6 @@ source:
   sha256: ef7a25d25370a0c618d50ea72f2e78b8777e015160694d7b7cac05188cc0db65  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 96ab5f9f61d75daf3fb1072930b6e9249f15b77bc3b3dca516ae8439dc1500fb  # [win]
-  patches:
-    - macosx-target.patch  # [not win]
 
 build:
   number: 0
