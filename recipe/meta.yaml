@@ -14,7 +14,7 @@ source:
     - macosx-target.patch  # [not win]
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
