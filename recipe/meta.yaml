@@ -23,10 +23,10 @@ requirements:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - python 2.7.*  # [not win]
-    - git # [linux]
-    - make # [linux]
   host:
     - vs2015_runtime  # [win]
+    - git  # [linux]
+    - make  # [linux]
   run:
     - vs2015_runtime  # [win]
 
