@@ -14,7 +14,7 @@ source:
     - macosx-target.patch  # [not win]
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
@@ -23,6 +23,8 @@ requirements:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - python 2.7.*  # [not win]
+    - git  # [linux]
+    - make  # [linux]
   host:
     - vs2015_runtime  # [win]
   run:
