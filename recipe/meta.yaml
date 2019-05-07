@@ -1,4 +1,4 @@
-{% set version = "11.14.0" %}
+{% set version = "12.2.0" %}
 
 package:
   name: nodejs
@@ -7,14 +7,14 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: b903ba6dc8131b9357e7c5e26967a0f48aa460c708154244a6348d49a7d8ff9a  # [not win]
+  sha256: 55f935d35ee201f47fb3b79fdb249dae0ba25f3e98190cfc548a9e3d30c90979  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 58a5d3316c04335ff3da2ce66b89f3cce86b1d1ca878d1d6d68478160c66dc12  # [win]
+  sha256: c1e7fb3c1c15d8f2ab5c1db9c9662097f9c682164b3f7397955ccce946442c97  # [win]
   patches:
     - macosx-target.patch  # [not win]
 
 build:
-  number: 1
+  number: 0
   ignore_prefix_files:
     - bin/node
 
