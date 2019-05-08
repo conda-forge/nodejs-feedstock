@@ -3,3 +3,4 @@ c_compiler:
   - gcc  # [linux]
 cxx_compiler:
   - vs2015  # [win]
+MACOSX_DEPLOYMENT_TARGET: '10.10'  # [osx]
