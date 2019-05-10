@@ -9,6 +9,8 @@ if [ "$(uname -m)" = "armv8" ] || [ "$(uname -m)" = "ppc64le" ]; then
     CPU_COUNT=$(grep -c ^processor /proc/cpuinfo)
 fi
 
+echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
+
 # The without snapshot comes from the error in
 # https://github.com/nodejs/node/issues/4212.
 ./configure --prefix=$PREFIX --without-snapshot
