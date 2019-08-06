@@ -1,4 +1,4 @@
-{% set version = "12.7.0" %}
+{% set version = "12.8.0" %}
 
 package:
   name: nodejs
@@ -7,9 +7,9 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: d5e63fd4ee88d539a69b9e71631d03014bd8e98596e741515e3d7aa930f4630a  # [not win]
+  sha256: 6f4e4ee7bcb52f782dce5a51d6951ff87151d9504be129d68d7aff469c0f7f36  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 68802316ca4eb4d72ec5f9ff837752a6ec8cd73537ad7c346f30899ee523f4b7  # [win]
+  sha256: b295aedebde069c4148534a9dfb2394ceba28cf367ddd8204a27d69c095a9e00  # [win]
   patches:
     - no-libatomic-mac.patch  # [osx]
 
