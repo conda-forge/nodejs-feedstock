@@ -10,6 +10,8 @@ source:
   sha256: d5e63fd4ee88d539a69b9e71631d03014bd8e98596e741515e3d7aa930f4630a  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 68802316ca4eb4d72ec5f9ff837752a6ec8cd73537ad7c346f30899ee523f4b7  # [win]
+  patches:
+    - no-libatomic-mac.patch  # [osx]
 
 build:
   number: 0
