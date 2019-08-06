@@ -14,7 +14,7 @@ source:
     - no-libatomic-mac.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
