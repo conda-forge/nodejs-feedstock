@@ -25,10 +25,19 @@ requirements:
     - python 2.7.*  # [not win]
     - git  # [linux]
     - make  # [linux]
+    - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
+    - zlib  # [not win]
   run:
     - vs2015_runtime  # [win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
+    - zlib  # [not win]
 
 test:
   commands:
