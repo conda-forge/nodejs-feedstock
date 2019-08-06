@@ -20,7 +20,15 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
 # The without snapshot comes from the error in
 # https://github.com/nodejs/node/issues/4212.
-./configure --prefix=$PREFIX --without-snapshot
+./configure \
+    --prefix=$PREFIX \
+    --without-snapshot \
+    --without-node-snapshot \
+    --shared-libuv \
+    --shared-openssl \
+    --shared-zlib \
+    --with-intl=system-icu
+
 make -j${CPU_COUNT}
 make install > /dev/null
 
