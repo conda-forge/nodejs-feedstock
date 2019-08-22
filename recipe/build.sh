@@ -10,6 +10,15 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "CPPFLAGS=$CPPFLAGS"
 fi
 
+# dyld path required to find libuv during testing
+if [ "$(uname)" = "Darwin" ]; then
+    # required for some tests
+    export DYLD_LIBRARY_PATH=$PREFIX/lib:$DYLD_LIBRARY_PATH
+else
+    # required for some tests
+    export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
+fi
+
 # node config seems to ignore LDFLAGS?
 # try cramming them into CFLAGS
 export CFLAGS="$CFLAGS $LDFLAGS"
