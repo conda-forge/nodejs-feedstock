@@ -3,9 +3,23 @@
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
 
+if [ "$(uname)" = "Darwin" ]; then
+    # unset macosx-version-min hardcoded in clang CPPFLAGS
+    export CPPFLAGS="$(echo ${CPPFLAGS:-} | sed -E 's@\-mmacosx\-version\-min=[^ ]*@@g')"
+    export CPPFLAGS="${CPPFLAGS} -D_DARWIN_C_SOURCE"
+    echo "CPPFLAGS=$CPPFLAGS"
+fi
+
 # The without snapshot comes from the error in
 # https://github.com/nodejs/node/issues/4212.
-./configure --prefix=$PREFIX --without-snapshot
+./configure \
+    --prefix=$PREFIX \
+    --without-snapshot \
+    --shared-libuv \
+    --shared-openssl \
+    --shared-zlib \
+    --with-intl=system-icu
+
 make -j${CPU_COUNT}
 make install
 

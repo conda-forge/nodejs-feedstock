@@ -23,10 +23,19 @@ requirements:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - python 2.7.*  # [not win]
+    - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
+    - zlib  # [not win]
   run:
     - vs2015_runtime  # [win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
+    - zlib  # [not win]
 
 test:
   commands:
