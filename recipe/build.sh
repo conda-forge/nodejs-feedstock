@@ -3,6 +3,9 @@
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
 
+# *add* C std
+export CFLAGS="$CFLAGS -std=c99"
+
 # Increase CPUs for multiarch builds
 if [ "$(uname -m)" = "armv8" ] || [ "$(uname -m)" = "ppc64le" ]; then
     echo "Using $(grep -c ^processor /proc/cpuinfo) CPUs"
