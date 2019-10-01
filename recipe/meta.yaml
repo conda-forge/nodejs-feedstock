@@ -12,6 +12,7 @@ source:
   sha256: b5f05deb31ac04b9c3a487542daf151e01c05017403a56ba443da623f36b153b  # [win]
   patches:
     - no-libatomic-mac.patch  # [osx]
+    - cinttypes.patch  # [linux]
 
 build:
   number: 0
