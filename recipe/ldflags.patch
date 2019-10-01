@@ -1,0 +1,14 @@
+Respect $LDFLAGS:
+
+diff a/deps/v8/gypfiles/toolchain.gypi b/deps/v8/gypfiles/toolchain.gypi
+--- a/deps/v8/gypfiles/toolchain.gypi
++++ b/deps/v8/gypfiles/toolchain.gypi
+@@ -1106,6 +1106,7 @@
+             'cflags': [ '-fno-strict-aliasing' ],
+           }],
+         ],  # conditions
++        'ldflags+': [ '$(LDFLAGS)' ],
+       }],
+       ['OS=="solaris"', {
+         'defines': [ '__C99FEATURES__=1' ],  # isinf() etc.
+

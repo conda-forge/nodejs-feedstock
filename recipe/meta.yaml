@@ -12,6 +12,7 @@ source:
   sha256: 19aa47de7c5950d7bd71a1e878013b98d93871cc311d7185f5472e6d3f633146  # [win]
   patches:
     - macosx-target.patch  # [not win]
+    - ldflags.patch  # [not win]
 
 build:
   number: 0
