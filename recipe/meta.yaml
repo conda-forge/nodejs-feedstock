@@ -12,6 +12,7 @@ source:
   sha256: 6a4e54bda091bd02dbd8ff1b9f6671e036297da012a53891e3834d4bf4bed297  # [win]
   patches:
     - no-libatomic-mac.patch  # [osx]
+    - cinttypes.patch  # [linux]
 
 build:
   number: 0
@@ -29,7 +30,7 @@ requirements:
   host:
     - vs2015_runtime  # [win]
     - icu  # [not win]
-    - libuv  # [not win]
+    - libuv >=1.31  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
   run:
