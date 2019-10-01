@@ -14,6 +14,9 @@ fi
 if [ "$(uname)" = "Darwin" ]; then
     # required for some tests
     export DYLD_LIBRARY_PATH=$PREFIX/lib:$DYLD_LIBRARY_PATH
+    # add DYLD path for tests
+    # (node incorrectly adds to LD_LIBRARY_PATH on mac)
+    export DYLD_LIBRARY_PATH=$SRC_DIR/out/Release/lib.host:$SRC_DIR/out/Release/lib.target:$DYLD_LIBRARY_PATH
 else
     # required for some tests
     export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
