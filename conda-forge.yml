@@ -5,8 +5,8 @@ appveyor:
   image: Visual Studio 2017
   secure:
     BINSTAR_TOKEN: tumuXLL8PU75WMnRDemRy02ruEq2RpNxeK3dz0MjFssnosPm2v4EFjfNB4PTotA1
-provider:
-  osx: circle
 compiler_stack: comp7
 max_py_ver: '37'
 max_r_ver: '35'
+provider:
+  win: default
