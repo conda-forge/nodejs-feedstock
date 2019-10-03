@@ -30,7 +30,7 @@ requirements:
   host:
     - vs2015_runtime  # [win]
     - icu  # [not win]
-    - libuv >=1.31  # [not win]
+    - libuv >=1.32  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
   run:
