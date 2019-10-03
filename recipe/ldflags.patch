@@ -1,0 +1,22 @@
+Respect $LDFLAGS:
+
+diff a/common.gypi b/common.gypi
+--- a/common.gypi
++++ b/common.gypi
+@@ -368,7 +368,7 @@
+       }],
+       [ 'OS in "linux freebsd openbsd solaris aix"', {
+         'cflags': [ '-pthread' ],
+-        'ldflags': [ '-pthread' ],
++        'ldflags': [ '-pthread', '$(LDFLAGS)' ],
+       }],
+       [ 'OS in "linux freebsd openbsd solaris android aix cloudabi"', {
+         'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', ],
+@@ -485,6 +484,7 @@
+               'OTHER_LDFLAGS': [
+                 '-Wl,-no_pie',
+                 '-Wl,-search_paths_first',
++                '$(LDFLAGS)',
+               ],
+             },
+           }],

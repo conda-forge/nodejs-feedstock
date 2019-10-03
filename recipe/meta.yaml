@@ -1,4 +1,4 @@
-{% set version = "10.15.3" %}
+{% set version = "10.16.3" %}
 
 package:
   name: nodejs
@@ -7,11 +7,12 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: db460a63d057ac015b75bb6a879fcbe2fefaaf22afa4b6f6445b9db61ce2270d  # [not win]
+  sha256: db5a5e03a815b84a1266a4b48bb6a6d887175705f84fd2472f0d28e5e305a1f8  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 93c881fdc0455a932dd5b506a7a03df27d9fe36155c1d3f351ebfa4e20bf1c0d  # [win]
+  sha256: 19aa47de7c5950d7bd71a1e878013b98d93871cc311d7185f5472e6d3f633146  # [win]
   patches:
     - macosx-target.patch  # [not win]
+    - ldflags.patch  # [not win]
 
 build:
   number: 0
@@ -23,10 +24,19 @@ requirements:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - python 2.7.*  # [not win]
+    - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
+    - zlib  # [not win]
   run:
     - vs2015_runtime  # [win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
+    - zlib  # [not win]
 
 test:
   commands:
