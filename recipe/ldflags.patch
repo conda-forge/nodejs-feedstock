@@ -1,14 +1,22 @@
 Respect $LDFLAGS:
 
-diff a/deps/v8/gypfiles/toolchain.gypi b/deps/v8/gypfiles/toolchain.gypi
---- a/deps/v8/gypfiles/toolchain.gypi
-+++ b/deps/v8/gypfiles/toolchain.gypi
-@@ -1106,6 +1106,7 @@
-             'cflags': [ '-fno-strict-aliasing' ],
-           }],
-         ],  # conditions
-+        'ldflags+': [ '$(LDFLAGS)' ],
+diff a/common.gypi b/common.gypi
+--- a/common.gypi
++++ b/common.gypi
+@@ -368,7 +368,7 @@
        }],
-       ['OS=="solaris"', {
-         'defines': [ '__C99FEATURES__=1' ],  # isinf() etc.
-
+       [ 'OS in "linux freebsd openbsd solaris aix"', {
+         'cflags': [ '-pthread' ],
+-        'ldflags': [ '-pthread' ],
++        'ldflags': [ '-pthread', '$(LDFLAGS)' ],
+       }],
+       [ 'OS in "linux freebsd openbsd solaris android aix cloudabi"', {
+         'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', ],
+@@ -485,6 +484,7 @@
+               'OTHER_LDFLAGS': [
+                 '-Wl,-no_pie',
+                 '-Wl,-search_paths_first',
++                '$(LDFLAGS)',
+               ],
+             },
+           }],
