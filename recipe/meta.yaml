@@ -11,6 +11,7 @@ source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 930e7bcd2ae5bcb1d4163c2adf09a392ed0e9a824b069d19daeb4f9f3430a195  # [win]
   patches:
+    - no-cctest.patch  # [not win]
     - no-libatomic-mac.patch  # [osx]
     - cinttypes.patch  # [linux]
 

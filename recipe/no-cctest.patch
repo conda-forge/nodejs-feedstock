@@ -1,0 +1,27 @@
+Skip cctest on linux
+
+doesn't build correctly with our glibc due to clock_gettime
+
+fails with:
+
+$BUILD_PREFIX/bin/../lib/gcc/x86_64-conda_cos6-linux-gnu/7.3.0/../../../../x86_64-conda_cos6-linux-gnu/bin/ld: /home/conda/feedstock_root/build_artifacts/nodejs_1571736211549/work/out/Release/obj.target/cares/deps/cares/src/ares__timeval.o: undefined reference to symbol 'clock_gettime@@GLIBC_2.2.5'
+$BUILD_PREFIX/bin/../lib/gcc/x86_64-conda_cos6-linux-gnu/7.3.0/../../../../x86_64-conda_cos6-linux-gnu/bin/ld: /home/conda/feedstock_root/build_artifacts/nodejs_1571736211549/_build_env/bin/../x86_64-conda_cos6-linux-gnu/sysroot/usr/lib/../lib/librt.so: error adding symbols: DSO missing from command line
+
+
+---
+ node.gyp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/node.gyp b/node.gyp
+index 9a5556c2eff4..d20d469dc670 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -1136,7 +1136,7 @@
+           'ldflags': [ '-I<(SHARED_INTERMEDIATE_DIR)' ]
+         }],
+         # Skip cctest while building shared lib node for Windows
+-        [ 'OS=="win" and node_shared=="true"', {
++        [ 'OS=="linux"', {
+           'type': 'none',
+         }],
+         [ 'node_shared=="true"', {
