@@ -14,6 +14,9 @@ if [ "$(uname)" = "Darwin" ]; then
     export CPPFLAGS="$(echo ${CPPFLAGS:-} | sed -E 's@\-mmacosx\-version\-min=[^ ]*@@g')"
     export CPPFLAGS="${CPPFLAGS} -D_DARWIN_C_SOURCE"
     echo "CPPFLAGS=$CPPFLAGS"
+else
+    # need librt for clock_gettime with nodejs >= 12.12
+    export LDFLAGS="$LDFLAGS -lrt"
 fi
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
