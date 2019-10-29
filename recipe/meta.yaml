@@ -1,4 +1,4 @@
-{% set version = "12.13.0" %}
+{% set version = "13.0.0" %}
 
 package:
   name: nodejs
@@ -7,9 +7,9 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 2e5321e095fe673a3ab936cf77faf8c983cba62f27a9fbd00530a7edb739a040  # [not win]
+  sha256: 103fc63b631a24ddc47189deee8c689e8158d7d804a67bd59fef04a1790bb217  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 6f920cebeecb4957b4ef0def6d9b04c49d4582864f8d1a207ce8d0665865781a  # [win]
+  sha256: 8ffcefde5e080d70790a9a2e1aab0724cc88b5526d5128b53fc59bf94f6ad5de  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - no-libatomic-mac.patch  # [osx]
@@ -24,14 +24,14 @@ requirements:
   build:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - python 2.7.*  # [not win]
+    - python 3.7  # [not win]
     - git  # [linux]
     - make  # [linux]
     - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
     - icu  # [not win]
-    - libuv >=1.32  # [not win]
+    - libuv >=1.33  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
   run:
