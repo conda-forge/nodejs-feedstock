@@ -15,7 +15,7 @@ index 9a5556c2eff4..d20d469dc670 100644
            '-Wl,-bnoerrmsg',
          ],
        }],
--      ['(OS=="linux" or OS=="mac") and llvm_version!=0', {
+-      ['OS in ("linux", "mac") and llvm_version != "0.0"', {
 +      ['OS=="linux" and llvm_version!=0', {
          'libraries': ['-latomic'],
        }],

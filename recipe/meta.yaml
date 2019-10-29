@@ -11,6 +11,7 @@ source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 1a2552b630651e08e9027339f71a65fbe3944540f0875563ea25639a091e1f33  # [win]
   patches:
+    - linux-librt.patch  # [not win]
     - no-libatomic-mac.patch  # [osx]
     - cinttypes.patch  # [linux]
 
@@ -23,14 +24,14 @@ requirements:
   build:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - python 2.7.*  # [not win]
+    - python 3.7  # [not win]
     - git  # [linux]
     - make  # [linux]
     - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
     - icu  # [not win]
-    - libuv >=1.32  # [not win]
+    - libuv >=1.33  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
   run:
