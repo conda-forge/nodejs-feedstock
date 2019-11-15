@@ -16,7 +16,7 @@ source:
     - cinttypes.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
@@ -40,6 +40,8 @@ requirements:
     - libuv  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
+  run_constrained:  # [osx]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   commands:
