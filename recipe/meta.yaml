@@ -12,7 +12,6 @@ source:
   sha256: 7fe37b34a4673a071bea52fcaf913ec422cf6fd79fd025bfb22de42ccc77f386  # [win]
   patches:
     - linux-librt.patch  # [not win]
-    - no-libatomic-mac.patch  # [osx]
     - cinttypes.patch  # [linux]
 
 build:
