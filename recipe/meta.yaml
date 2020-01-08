@@ -1,4 +1,4 @@
-{% set version = "13.0.0" %}
+{% set version = "13.6.0" %}
 
 package:
   name: nodejs
@@ -7,16 +7,16 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 103fc63b631a24ddc47189deee8c689e8158d7d804a67bd59fef04a1790bb217  # [not win]
+  sha256: c1db19b4cf23b3903ac3048dad44a05397a63854b2a159fedc454eb15650369a  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 8ffcefde5e080d70790a9a2e1aab0724cc88b5526d5128b53fc59bf94f6ad5de  # [win]
+  sha256: 7fe37b34a4673a071bea52fcaf913ec422cf6fd79fd025bfb22de42ccc77f386  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - no-libatomic-mac.patch  # [osx]
     - cinttypes.patch  # [linux]
 
 build:
-  number: 1
+  number: 0
   ignore_prefix_files:
     - bin/node
 
