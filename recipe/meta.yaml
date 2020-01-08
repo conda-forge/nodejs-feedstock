@@ -1,4 +1,4 @@
-{% set version = "13.0.0" %}
+{% set version = "12.14.1" %}
 
 package:
   name: nodejs
@@ -7,16 +7,16 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 103fc63b631a24ddc47189deee8c689e8158d7d804a67bd59fef04a1790bb217  # [not win]
+  sha256: 42a7f0777fea8825611cb9250ff927824dba4f7aea854b47d522798acf4bdbc6  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 8ffcefde5e080d70790a9a2e1aab0724cc88b5526d5128b53fc59bf94f6ad5de  # [win]
+  sha256: 1f96ccce3ba045ecea3f458e189500adb90b8bc1a34de5d82fc10a5bf66ce7e3  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - no-libatomic-mac.patch  # [osx]
     - cinttypes.patch  # [linux]
 
 build:
-  number: 1
+  number: 0
   ignore_prefix_files:
     - bin/node
 
@@ -24,7 +24,7 @@ requirements:
   build:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - python 3.7  # [not win]
+    - python 2.7  # [not win]
     - git  # [linux]
     - make  # [linux]
     - pkg-config  # [not win]
@@ -32,13 +32,13 @@ requirements:
     - vs2015_runtime  # [win]
     - icu  # [not win]
     - libuv >=1.33  # [not win]
-    - openssl  # [not win]
+    - openssl >=1.1.1d   # [not win]
     - zlib  # [not win]
   run:
     - vs2015_runtime  # [win]
     - icu  # [not win]
     - libuv  # [not win]
-    - openssl  # [not win]
+    - openssl >=1.1.1d  # [not win]
     - zlib  # [not win]
   run_constrained:  # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
