@@ -24,7 +24,7 @@ requirements:
   build:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - python 3.7  # [not win]
+    - python 2.7  # [not win]
     - git  # [linux]
     - make  # [linux]
     - pkg-config  # [not win]
