@@ -1,4 +1,4 @@
-{% set version = "12.14.1" %}
+{% set version = "12.16.0" %}
 
 package:
   name: nodejs
@@ -7,9 +7,9 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 42a7f0777fea8825611cb9250ff927824dba4f7aea854b47d522798acf4bdbc6  # [not win]
+  sha256: ae2dfe74485d821d4fef7cf1802acd2322cd994c853a2327c4306952f4453441  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 1f96ccce3ba045ecea3f458e189500adb90b8bc1a34de5d82fc10a5bf66ce7e3  # [win]
+  sha256: 9a590dd064b491fbd40b366ae4a119fe6cef516a25fb4d78d7c2a64b37574da8  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - no-libatomic-mac.patch  # [osx]
@@ -31,7 +31,7 @@ requirements:
   host:
     - vs2015_runtime  # [win]
     - icu  # [not win]
-    - libuv >=1.33  # [not win]
+    - libuv >=1.34  # [not win]
     - openssl >=1.1.1d   # [not win]
     - zlib  # [not win]
   run:
