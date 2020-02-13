@@ -1,5 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.10'
+- '10.11'
 c_compiler:
 - clang
 c_compiler_version:
@@ -17,14 +17,10 @@ icu:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
-- '10.10'
-openssl:
-- 1.1.1a
+- '10.11'
 pin_run_as_build:
   icu:
     max_pin: x
-  openssl:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 zlib:
