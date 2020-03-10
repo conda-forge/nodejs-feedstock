@@ -15,7 +15,7 @@ source:
     - cinttypes.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   ignore_prefix_files:
     - bin/node
 
@@ -25,7 +25,7 @@ requirements:
     - {{ compiler('cxx') }}  # [not win]
     - python 3.7  # [not win]
     - git  # [linux]
-    - make  # [linux]
+    - ninja  # [not win]
     - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
