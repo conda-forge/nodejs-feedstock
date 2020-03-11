@@ -13,6 +13,7 @@ source:
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
+    - linux-install.patch  # [linux]
 
 build:
   number: 1

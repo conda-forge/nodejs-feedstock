@@ -1,0 +1,22 @@
+From a4421f2c5b17025f77a8f0860b1fb8861ffcfec6 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <xhochy@users.noreply.github.com>
+Date: Wed, 11 Mar 2020 10:57:57 +0100
+Subject: [PATCH] No .target suffix on configure builds.
+
+---
+ tools/install.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/install.py b/tools/install.py
+index 655802980a6e..c64ebb929b42 100755
+--- a/tools/install.py
++++ b/tools/install.py
+@@ -135,7 +135,7 @@ def files(action):
+       # GYP will output to lib.target except on OS X, this is hardcoded
+       # in its source - see the _InstallableTargetInstallPath function.
+       if sys.platform != 'darwin':
+-        output_prefix += 'lib.target/'
++        output_prefix += 'lib/'
+ 
+   if 'false' == variables.get('node_shared'):
+     action([output_prefix + output_file], 'bin/' + output_file)
