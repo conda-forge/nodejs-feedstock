@@ -42,3 +42,7 @@ cp out/Release/node $PREFIX/bin
 node -v
 npm version
 
+if [ "$(uname)" != "Darwin" ]; then
+  # Get rid of OSX specific files that confuse conda-build
+  rm -rf $PREFIX/lib/node_modules/npm/node_modules/term-size/vendor/macos/term-size
+fi
