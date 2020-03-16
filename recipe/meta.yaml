@@ -1,4 +1,4 @@
-{% set version = "13.9.0" %}
+{% set version = "13.10.1" %}
 
 package:
   name: nodejs
@@ -7,16 +7,16 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 1953121fcf5a8933e0bd282f78e6b8b25fb6d55bb50d47416ae7a7dbbdc288bb  # [not win]
+  sha256: d5b829176ae2d712dba07aa53e0a96eed59ce8cb7e98a175e18fe9737c92aee1  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: ec0a55bb703906494e738cd3d09e3274b34f0a3fbe207b9e67502092ed017500  # [win]
+  sha256: f9d0aac273a44dbd52dd8cdb3d6c684b68b860d128af58d77a0c08f39f51f229  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
     - linux-install.patch  # [linux]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: False
 
@@ -66,3 +66,4 @@ extra:
     - msarahan
     - pelson
     - blink1073
+    - xhochy
