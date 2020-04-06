@@ -181,4 +181,5 @@ Feedstock Maintainers
 * [@minrk](https://github.com/minrk/)
 * [@msarahan](https://github.com/msarahan/)
 * [@pelson](https://github.com/pelson/)
+* [@xhochy](https://github.com/xhochy/)
 
