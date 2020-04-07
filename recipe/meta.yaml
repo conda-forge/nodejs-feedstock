@@ -1,4 +1,4 @@
-{% set version = "13.10.1" %}
+{% set version = "13.12.0" %}
 
 package:
   name: nodejs
@@ -7,9 +7,9 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: d5b829176ae2d712dba07aa53e0a96eed59ce8cb7e98a175e18fe9737c92aee1  # [not win]
+  sha256: 1b74d624493f17210b96dbd925066034e2d540090a36a99d5c50155cd6726a38  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: f9d0aac273a44dbd52dd8cdb3d6c684b68b860d128af58d77a0c08f39f51f229  # [win]
+  sha256: de8445794ecbcfe895f4775417d1e2cc023e2212b1f5d4ff5cc0ed6875f7c911  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -18,7 +18,7 @@ source:
 build:
   number: 0
   # Prefix replacement breaks in the binary embedded configurations.
-  detect_binary_files_with_prefix: False
+  detect_binary_files_with_prefix: false
 
 requirements:
   build:
@@ -40,7 +40,7 @@ requirements:
     - libuv  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
-  run_constrained:  # [osx]
+  run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
