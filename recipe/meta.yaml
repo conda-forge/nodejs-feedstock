@@ -1,4 +1,7 @@
-{% set version = "13.13.0" %}
+{% set version = "14.2.0" %}
+
+# NODE_MODULE_VERSION set in src/node_version.h
+{% set NODE_MODULE_VERSION = 83 %}
 
 package:
   name: nodejs
@@ -7,9 +10,9 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: bbcb1bbcf78777e402ca220edd8f5c23475ed0164025d8a6bc3367e3e3ac9577  # [not win]
+  sha256: 8c9aa909567589e97a22b2df1cf6a8d61e0a546b4c784703e6722f13da259493  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 79f2a39c1047666f2bbf2efe53c069a38b8f6ef18d569bf338463aea1914b89d  # [win]
+  sha256: 99085f45a894e257123d7c729113cc00ed1413df432dbdce5fe53867e7c53b11  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -30,7 +33,7 @@ requirements:
     - pkg-config  # [not win]
   host:
     - vs2015_runtime  # [win]
-    - icu  # [not win]
+    - icu >=65  # [not win]
     - libuv >=1.33  # [not win]
     - openssl  >=1.1.1d  # [not win]
     - zlib  # [not win]
@@ -51,8 +54,8 @@ test:
     - npm install -h
     - npm config get prefix -g
     - test $(echo "console.log(1 + 3)" | node) == 4  # [not win]
-    - test -f $PREFIX/lib/libnode.79.dylib  # [osx]
-    - test -f $PREFIX/lib/libnode.so.79  # [linux]
+    - test -f $PREFIX/lib/libnode.{{ NODE_MODULE_VERSION }}.dylib  # [osx]
+    - test -f $PREFIX/lib/libnode.so.{{ NODE_MODULE_VERSION }}  # [linux]
 
 about:
   home: https://nodejs.org/
