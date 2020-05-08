@@ -1,5 +1,8 @@
 {% set version = "14.2.0" %}
 
+# NODE_MODULE_VERSION set in src/node_version.h
+{% set NODE_MODULE_VERSION = 83 %}
+
 package:
   name: nodejs
   version: {{ version }}
@@ -51,8 +54,8 @@ test:
     - npm install -h
     - npm config get prefix -g
     - test $(echo "console.log(1 + 3)" | node) == 4  # [not win]
-    - test -f $PREFIX/lib/libnode.79.dylib  # [osx]
-    - test -f $PREFIX/lib/libnode.so.79  # [linux]
+    - test -f $PREFIX/lib/libnode.{{ NODE_MODULE_VERSION }}.dylib  # [osx]
+    - test -f $PREFIX/lib/libnode.so.{{ NODE_MODULE_VERSION }}  # [linux]
 
 about:
   home: https://nodejs.org/
