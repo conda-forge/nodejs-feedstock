@@ -13,7 +13,7 @@ cxx_compiler_version:
 docker_image:
 - condaforge/linux-anvil-comp7
 icu:
-- '64.2'
+- '67'
 openssl:
 - 1.1.1
 pin_run_as_build:
