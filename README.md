@@ -5,7 +5,7 @@ Home: https://nodejs.org/
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: a platform for easily building fast, scalable network applications
 
