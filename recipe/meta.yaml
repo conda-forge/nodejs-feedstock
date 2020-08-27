@@ -1,4 +1,4 @@
-{% set version = "14.8.0" %}
+{% set version = "14.9.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 83 %}
@@ -10,9 +10,9 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 6552a640a8b1a34f4ad00b4147eed6432386b304dcb2f5d73a659258ed2a8cf2  # [not win]
+  sha256: 413d91191bd69ce1cfdb956116461db4f70f2019f10f78802db545ad3e341b39  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 848ca582bdf8b7fdc21a38d9f3887a45bdf6381b04549fc0f918852889157c9a  # [win]
+  sha256: bcd3fc61739e7ac9a4b6103da3fe5f8c9e310b7b0f1b1f0200d5a4b5dd65d723  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
