@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '7.5'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -15,14 +15,12 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '7.5'
 docker_image:
 - condaforge/linux-anvil-aarch64
 icu:
-- '64.2'
+- '67'
 pin_run_as_build:
-  icu:
-    max_pin: x
   zlib:
     max_pin: x.x
 target_platform:
