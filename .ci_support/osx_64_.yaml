@@ -21,8 +21,6 @@ macos_min_version:
 openssl:
 - 1.1.1
 pin_run_as_build:
-  icu:
-    max_pin: x
   openssl:
     max_pin: x.x.x
   zlib:
