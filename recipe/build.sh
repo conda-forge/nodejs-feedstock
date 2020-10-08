@@ -32,7 +32,13 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
     --shared-zlib \
     --with-intl=system-icu
 
-make -j${CPU_COUNT}
+# Decrease parallelism a bit as we will otherwise get out-of-memory problems
+# This is only necessary on Travis
+if [ "${TRAVIS}" = "true" ]; then
+  make -j1
+else
+  make -j${CPU_COUNT}
+fi
 make install > /dev/null
 
 node -v
