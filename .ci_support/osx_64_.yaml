@@ -13,17 +13,18 @@ cxx_compiler:
 cxx_compiler_version:
 - '10'
 icu:
-- '64.2'
+- '67'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
 - '10.11'
 pin_run_as_build:
-  icu:
-    max_pin: x
   zlib:
     max_pin: x.x
 target_platform:
 - osx-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1.2'
