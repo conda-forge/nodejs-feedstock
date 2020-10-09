@@ -5,11 +5,9 @@ Home: https://nodejs.org/
 
 Package license: MIT
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nodejs-feedstock/blob/master/LICENSE.txt)
 
 Summary: a platform for easily building fast, scalable network applications
-
-
 
 Current build status
 ====================
