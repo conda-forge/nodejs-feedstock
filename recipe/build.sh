@@ -38,6 +38,7 @@ else
     ninja -C out/Release
 fi
 
+cp out/Release/lib/libnode.* out/Release/
 python tools/install.py install ${PREFIX} ''
 cp out/Release/node $PREFIX/bin
 
