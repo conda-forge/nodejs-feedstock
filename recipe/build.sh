@@ -38,7 +38,9 @@ else
     ninja -C out/Release
 fi
 
-cp out/Release/lib/libnode.* out/Release/
+if [ "$(uname)" != "Darwin" ]; then
+  cp out/Release/lib/libnode.* out/Release/
+fi
 python tools/install.py install ${PREFIX} ''
 cp out/Release/node $PREFIX/bin
 
