@@ -26,6 +26,7 @@ requirements:
   build:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
+    - sysroot_linux-64 2.17  # [linux64]
     - python 3.7  # [not win]
     - git  # [linux]
     - ninja  # [not win]

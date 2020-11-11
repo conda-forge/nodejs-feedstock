@@ -8,6 +8,13 @@ MACOSX_DEPLOYMENT_TARGET:
 macos_min_version:
   - '10.11'  # [osx]
 
+cuda_compiler_version:                    # [linux64]
+  - None                                  # [linux64]
+docker_image:                             # [linux64]
+  - condaforge/linux-anvil-cos7-x86_64    # [linux64]
+cdt_name:                                 # [linux64]
+  - cos7                                  # [linux64]
+
 pin_run_as_build:
   # libuv is missing run_exports
   libuv:
