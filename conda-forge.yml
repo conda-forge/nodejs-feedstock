@@ -2,6 +2,6 @@ appveyor:
   image: Visual Studio 2017
 provider:
   linux_aarch64: default
-  linux_ppc64le: azure
+  linux_ppc64le: default
   win: default
 conda_forge_output_validation: true

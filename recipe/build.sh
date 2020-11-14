@@ -34,11 +34,13 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
 # Decrease parallelism a bit as we will otherwise get out-of-memory problems
 # This is only necessary on Travis
-if [ "${TRAVIS}" = "true" ]; then
-  make -j1
-else
-  make -j${CPU_COUNT}
+if [ "$(uname -m)" = "ppc64le" ]; then
+    # Decrease parallelism a bit as we will otherwise get out-of-memory problems
+    echo "Using $(grep -c ^processor /proc/cpuinfo) CPUs"
+    CPU_COUNT=$(grep -c ^processor /proc/cpuinfo)
+    CPU_COUNT=$((CPU_COUNT / 4))
 fi
+make -j${CPU_COUNT}
 make install > /dev/null
 
 node -v
