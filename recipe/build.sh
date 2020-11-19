@@ -39,6 +39,8 @@ if [ "$(uname -m)" = "ppc64le" ]; then
     echo "Using $(grep -c ^processor /proc/cpuinfo) CPUs"
     CPU_COUNT=$(grep -c ^processor /proc/cpuinfo)
     CPU_COUNT=$((CPU_COUNT / 4))
+    # hardcode to ensure it works
+    CPU_COUNT=3
 fi
 make -j${CPU_COUNT}
 make install > /dev/null
