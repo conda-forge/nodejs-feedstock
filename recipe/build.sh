@@ -30,10 +30,7 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
 if [ "$(uname -m)" = "ppc64le" ]; then
     # Decrease parallelism a bit as we will otherwise get out-of-memory problems
-    echo "Using $(grep -c ^processor /proc/cpuinfo) CPUs"
-    CPU_COUNT=$(grep -c ^processor /proc/cpuinfo)
-    CPU_COUNT=$((CPU_COUNT / 4))
-    ninja -C out/Release -j${CPU_COUNT}
+    ninja -C out/Release -j3
 else
     ninja -C out/Release
 fi
