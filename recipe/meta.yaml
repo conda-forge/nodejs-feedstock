@@ -15,7 +15,7 @@ source:
     - cinttypes.patch  # [linux]
 
 build:
-  number: 1
+  number: 2
   ignore_prefix_files:
     - bin/node
 
