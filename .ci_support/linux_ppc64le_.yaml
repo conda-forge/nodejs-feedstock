@@ -15,7 +15,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 icu:
-- '67'
+- '68'
 openssl:
 - 1.1.1
 pin_run_as_build:
