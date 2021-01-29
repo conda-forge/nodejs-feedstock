@@ -50,7 +50,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
            ;;
     esac
     
-    EXTRA_ARGS="--cross-compiling --dest-os=$DEST_OS --dest-arch=$DEST_ARCH"
+    EXTRA_ARGS="--cross-compiling --dest-os=$DEST_OS --dest-cpu=$DEST_ARCH"
 fi
 
 export CC_host=$CC_FOR_BUILD
