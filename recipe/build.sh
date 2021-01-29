@@ -55,6 +55,7 @@ fi
 
 export CC_host=$CC_FOR_BUILD
 export CXX_host=$CXX_FOR_BUILD
+export AR_host=$($CC_FOR_BUILD -print-prog-name=ar)
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
