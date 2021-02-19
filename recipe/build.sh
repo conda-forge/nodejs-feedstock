@@ -70,7 +70,12 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
     --with-intl=system-icu \
     ${EXTRA_ARGS}
 
-ninja -C out/Release -j${CPU_COUNT}
+if [ "$(uname -m)" = "ppc64le" ]; then
+    # Decrease parallelism a bit as we will otherwise get out-of-memory problems
+    ninja -C out/Release -j3
+else
+    ninja -C out/Release -j${CPU_COUNT}
+fi
 
 if [[ "$target_platform" != osx-* ]]; then
   cp out/Release/lib/libnode.* out/Release/
