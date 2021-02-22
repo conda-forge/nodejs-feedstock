@@ -84,8 +84,10 @@ fi
 python tools/install.py install ${PREFIX} ''
 cp out/Release/node $PREFIX/bin
 
-node -v
-npm version
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+  node -v
+  npm version
+fi
 
 if [[ "$target_platform" != osx-* ]]; then
   # Get rid of OSX specific files that confuse conda-build
