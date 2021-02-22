@@ -15,8 +15,8 @@ source:
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
-    - less-shared-intermediate.patch  # [osx and arm64]
-    - ldflags_host.patch  # [osx and arm64]
+    - less-shared-intermediate.patch  # [build_platform != target_platform]
+    - ldflags_host.patch  # [build_platform != target_platform]
 
 build:
   number: 1
