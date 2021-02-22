@@ -56,6 +56,7 @@ fi
 export CC_host=$CC_FOR_BUILD
 export CXX_host=$CXX_FOR_BUILD
 export AR_host=$($CC_FOR_BUILD -print-prog-name=ar)
+export LDFLAGS_host="$(echo $LDFLAGS | sed s@${PREFIX}@${BUILD_PREFIX}@g)"
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 

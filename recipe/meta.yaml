@@ -16,6 +16,7 @@ source:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [osx and arm64]
+    - ldflags_host.patch  # [osx and arm64]
 
 build:
   number: 1
@@ -31,6 +32,13 @@ requirements:
     - git  # [linux]
     - ninja  # [not win]
     - pkg-config  # [not win]
+
+    # need host builds of several lib dependencies
+    # when cross-compiling
+    - icu  # [osx and arm64]
+    - libuv  # [osx and arm64]
+    - openssl  # [osx and arm64]
+    - zlib  # [osx and arm64]
   host:
     - icu  # [not win]
     - libuv  # [not win]
