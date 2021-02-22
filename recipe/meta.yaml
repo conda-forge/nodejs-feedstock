@@ -35,10 +35,10 @@ requirements:
 
     # need host builds of several lib dependencies
     # when cross-compiling
-    - icu  # [osx and arm64]
-    - libuv  # [osx and arm64]
-    - openssl  # [osx and arm64]
-    - zlib  # [osx and arm64]
+    - icu  # [build_platform != target_platform]
+    - libuv  # [build_platform != target_platform]
+    - openssl  # [build_platform != target_platform]
+    - zlib  # [build_platform != target_platform]
   host:
     - icu  # [not win]
     - libuv  # [not win]
