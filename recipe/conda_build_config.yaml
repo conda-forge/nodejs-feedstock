@@ -1,12 +1,20 @@
-c_compiler:
-  - vs2015  # [win]
-  - gcc  # [linux]
-cxx_compiler:
-  - vs2015  # [win]
-MACOSX_DEPLOYMENT_TARGET:
-  - '10.11'  # [osx]
-macos_min_version:
-  - '10.11'  # [osx]
+MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
+  - '10.11'                # [osx and x86_64]
+macos_min_version:         # [osx and x86_64]
+  - '10.11'                # [osx and x86_64]
+
+cudnn:                                    # [linux64]
+  - undefined                             # [linux64]
+cuda_compiler_version:                    # [linux64]
+  - None                                  # [linux64]
+docker_image:                             # [linux64]
+  - condaforge/linux-anvil-cos7-x86_64    # [linux64]
+cdt_name:                                 # [linux64]
+  - cos7                                  # [linux64]
+c_compiler_version:                       # [ppc64le]
+  - '8'                                   # [ppc64le]
+cxx_compiler_version:                     # [ppc64le]
+  - '8'                                   # [ppc64le]
 
 pin_run_as_build:
   # libuv is missing run_exports

@@ -31,13 +31,11 @@ requirements:
     - ninja  # [not win]
     - pkg-config  # [not win]
   host:
-    - vs2015_runtime  # [win]
     - icu >=65  # [not win]
     - libuv >=1.33  # [not win]
     - openssl  >=1.1.1d  # [not win]
     - zlib  # [not win]
   run:
-    - vs2015_runtime  # [win]
     - icu  # [not win]
     - libuv  # [not win]
     - openssl  # [not win]
