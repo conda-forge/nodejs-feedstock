@@ -1,0 +1,29 @@
+From ddacdd9054f5b6e3bdc6db066b2ea2c0796cbe70 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Fri, 19 Feb 2021 09:48:02 -0600
+Subject: [PATCH] tools: use LDFLAGS_host for host toolset
+
+upstream: https://github.com/nodejs/node/pull/37444
+
+This makes the behaviour similar to that of CFLAGS_host
+---
+ tools/gyp/pylib/gyp/generator/ninja.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tools/gyp/pylib/gyp/generator/ninja.py b/tools/gyp/pylib/gyp/generator/ninja.py
+index e064bad7ed8..2a0cf226560 100644
+--- a/tools/gyp/pylib/gyp/generator/ninja.py
++++ b/tools/gyp/pylib/gyp/generator/ninja.py
+@@ -1427,7 +1427,11 @@ def WriteLinkForArch(
+         is_executable = spec["type"] == "executable"
+         # The ldflags config key is not used on mac or win. On those platforms
+         # linker flags are set via xcode_settings and msvs_settings, respectively.
+-        env_ldflags = os.environ.get("LDFLAGS", "").split()
++        if self.toolset == "target":
++            env_ldflags = os.environ.get("LDFLAGS", "").split()
++        elif self.toolset == "host":
++            env_ldflags = os.environ.get("LDFLAGS_host", "").split()
++
+         if self.flavor == "mac":
+             ldflags = self.xcode_settings.GetLdflags(
+                 config_name,

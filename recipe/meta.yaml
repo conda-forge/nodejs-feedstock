@@ -1,4 +1,4 @@
-{% set version = "15.3.0" %}
+{% set version = "15.8.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 88 %}
@@ -8,14 +8,15 @@ package:
   version: {{ version }}
 
 source:
-  fn: node-v{{ version }}.tar.gz
-  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: cadfa384a5f14591b84ce07a1afe529f28deb0d43366fb0ae4e78afba96bfaf2  # [not win]
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz       # [not win]
+  sha256: e08c8778a6b767cd0d2ab4613946d1616c3d4054dead08b04f705d607c84510f     # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 757c3f5617d28f1fc56ccb8dd7008ea865e482ae9baf5e4bf4d003afa8ae9c8b  # [win]
+  sha256: edb16def1fecaecaffcccf9352e9f94a029d47203f26ae44dc1d4aa7eef35940     # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
+    - less-shared-intermediate.patch  # [build_platform != target_platform]
+    - ldflags_host.patch  # [build_platform != target_platform]
 
 build:
   number: 1
@@ -27,18 +28,23 @@ requirements:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - sysroot_linux-64 2.17  # [linux64]
-    - python 3.7  # [not win]
+    - python 3.8  # [not win]
     - git  # [linux]
     - ninja  # [not win]
     - pkg-config  # [not win]
+
+    # need host builds of several lib dependencies
+    # when cross-compiling
+    - icu  # [build_platform != target_platform]
+    - libuv  # [build_platform != target_platform]
+    - openssl  # [build_platform != target_platform]
+    - zlib  # [build_platform != target_platform]
   host:
-    - vs2015_runtime  # [win]
-    - icu >=65  # [not win]
-    - libuv >=1.33  # [not win]
-    - openssl  >=1.1.1d  # [not win]
+    - icu  # [not win]
+    - libuv  # [not win]
+    - openssl  # [not win]
     - zlib  # [not win]
   run:
-    - vs2015_runtime  # [win]
     - icu  # [not win]
     - libuv  # [not win]
     - openssl  # [not win]
