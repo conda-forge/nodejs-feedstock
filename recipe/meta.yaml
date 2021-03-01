@@ -15,9 +15,11 @@ source:
     - cinttypes.patch  # [linux]
 
 build:
-  number: 2
+  number: 3
   ignore_prefix_files:
     - bin/node
+  run_exports:
+    - {{ pin_subpackage('nodejs', max_pin='x') }}
 
 requirements:
   build:
