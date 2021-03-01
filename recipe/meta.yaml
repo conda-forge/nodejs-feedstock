@@ -19,9 +19,11 @@ source:
     - ldflags_host.patch  # [build_platform != target_platform]
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
+  run_exports:
+    - {{ pin_subpackage('nodejs', max_pin='x') }}
 
 requirements:
   build:
