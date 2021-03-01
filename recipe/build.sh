@@ -71,6 +71,12 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
     --with-intl=system-icu \
     ${EXTRA_ARGS}
 
+if [[ "${target_platform}" == "linux-ppc64le" ]]; then
+  for ninja_build in `find out/Release/obj.host/ -name '*.ninja'`; do
+    sed -ie 's/-mminimal-toc//g' ${ninja_build}
+  done
+fi
+
 if [ "$(uname -m)" = "ppc64le" ]; then
     # Decrease parallelism a bit as we will otherwise get out-of-memory problems
     ninja -C out/Release -j3
