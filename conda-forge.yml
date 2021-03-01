@@ -2,7 +2,8 @@ build_platform:
   osx_arm64: osx_64
 provider:
   linux_aarch64: default
-  linux_ppc64le: default
+  # Travis is failing too often to keep this working
+  linux_ppc64le: azure
   win: default
 conda_forge_output_validation: true
 test_on_native_only: true
