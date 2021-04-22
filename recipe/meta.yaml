@@ -19,7 +19,7 @@ source:
     - ldflags_host.patch  # [build_platform != target_platform]
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
@@ -30,7 +30,7 @@ requirements:
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
     - sysroot_linux-64 2.17  # [linux64]
-    - python 3.8  # [not win]
+    - python >=3.7  # [not win]
     - git  # [linux]
     - ninja  # [not win]
     - pkg-config  # [not win]
