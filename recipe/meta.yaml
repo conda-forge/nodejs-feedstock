@@ -16,7 +16,6 @@ source:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [build_platform != target_platform]
-    - ldflags_host.patch  # [build_platform != target_platform]
 
 build:
   number: 0
