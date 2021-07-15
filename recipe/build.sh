@@ -77,12 +77,7 @@ if [[ "${target_platform}" == "linux-ppc64le" ]]; then
   done
 fi
 
-if [ "$(uname -m)" = "ppc64le" ]; then
-    # Decrease parallelism a bit as we will otherwise get out-of-memory problems
-    ninja -C out/Release -j3
-else
-    ninja -C out/Release -j${CPU_COUNT}
-fi
+ninja -C out/Release -j${CPU_COUNT}
 
 if [[ "$target_platform" != osx-* ]]; then
   cp out/Release/lib/libnode.* out/Release/
