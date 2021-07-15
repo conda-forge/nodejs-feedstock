@@ -1,0 +1,28 @@
+From aa061a5045735b46e15730ef5c4d5b40f13f69ca Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 14 Jul 2021 21:24:03 +0200
+Subject: [PATCH] Use HOST instead of TARGET to determine thread context
+
+---
+ deps/v8/src/trap-handler/handler-inside-posix.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/deps/v8/src/trap-handler/handler-inside-posix.cc b/deps/v8/src/trap-handler/handler-inside-posix.cc
+index 908c8c83..d0f30c09 100644
+--- a/deps/v8/src/trap-handler/handler-inside-posix.cc
++++ b/deps/v8/src/trap-handler/handler-inside-posix.cc
+@@ -108,9 +108,9 @@ bool TryHandleSignal(int signum, siginfo_t* info, void* context) {
+     ucontext_t* uc = reinterpret_cast<ucontext_t*>(context);
+ #if V8_OS_LINUX && V8_TARGET_ARCH_X64
+     auto* context_ip = &uc->uc_mcontext.gregs[REG_RIP];
+-#elif V8_OS_MACOSX && V8_TARGET_ARCH_ARM64
++#elif V8_OS_MACOSX && V8_HOST_ARCH_ARM64
+     auto* context_ip = &uc->uc_mcontext->__ss.__pc;
+-#elif V8_OS_MACOSX && V8_TARGET_ARCH_X64
++#elif V8_OS_MACOSX && V8_HOST_ARCH_X64
+     auto* context_ip = &uc->uc_mcontext->__ss.__rip;
+ #elif V8_OS_FREEBSD && V8_TARGET_ARCH_X64
+     auto* context_ip = &uc->uc_mcontext.mc_rip;
+-- 
+2.31.0
+
