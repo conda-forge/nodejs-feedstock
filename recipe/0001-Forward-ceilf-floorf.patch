@@ -1,0 +1,33 @@
+From bf1284ac65bb897ca527c2e1653ef0f8c2a9e532 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Thu, 15 Jul 2021 11:12:25 +0000
+Subject: [PATCH] Forward ceilf/floorf
+
+---
+ deps/v8/src/execution/ppc/simulator-ppc.cc | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/deps/v8/src/execution/ppc/simulator-ppc.cc b/deps/v8/src/execution/ppc/simulator-ppc.cc
+index c812af36..e675179a 100644
+--- a/deps/v8/src/execution/ppc/simulator-ppc.cc
++++ b/deps/v8/src/execution/ppc/simulator-ppc.cc
+@@ -28,6 +28,16 @@
+ #include "src/runtime/runtime-utils.h"
+ #include "src/utils/ostreams.h"
+ 
++template <typename... Args>
++auto std::ceilf(Args&&... args) -> decltype(::ceilf(std::forward<Args>(args)...)) {
++  return ::ceilf(std::forward<Args>(args)...);
++}
++
++template <typename... Args>
++auto std::floorf(Args&&... args) -> decltype(::floorf(std::forward<Args>(args)...)) {
++  return ::floorf(std::forward<Args>(args)...);
++}
++
+ // Only build the simulator if not compiling for real PPC hardware.
+ namespace v8 {
+ namespace internal {
+-- 
+2.32.0
+

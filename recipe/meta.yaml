@@ -1,7 +1,7 @@
-{% set version = "15.14.0" %}
+{% set version = "16.4.1" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
-{% set NODE_MODULE_VERSION = 88 %}
+{% set NODE_MODULE_VERSION = 93 %}
 
 package:
   name: nodejs
@@ -9,14 +9,15 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: f3a35c1b29b58846575085fdee7774d78b75ff4cf1e52572afce7f38685b159a  # [not win]
+  sha256: 562df905fdc9c8b3854fea1c755cc969b3c1437774d28b513457cc4034136458  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: efd8d6fba2030d97172a693c05ed4fc446ca5b2258ef2fa6f03f32abb402f036  # [win]
+  sha256: f2f0dfc9ee54aff908575734713c482d76bfbed14dcfaea4931fff7450753f25  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [build_platform != target_platform]
-    - ldflags_host.patch  # [build_platform != target_platform]
+    - 0001-Use-HOST-instead-of-TARGET-to-determine-thread-conte.patch  # [build_platform != target_platform]
+    - 0001-Forward-ceilf-floorf.patch  # [not win]
 
 build:
   number: 0
