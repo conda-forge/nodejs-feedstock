@@ -1,4 +1,4 @@
-{% set version = "16.5.0" %}
+{% set version = "16.6.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 93 %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: a0d233cde072822af7fd3043b866e526a1739df32c3ace6210ae289f3266ccb7  # [not win]
+  sha256: 479bd81469ade081381d441de9e3dc9a1d276ec8408f3297f282452dac7b0b3c  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 9223eb2cbd913fd313ab4456d5fdc6b73e44f916e76189bdaecaa08dc9f5de7d  # [win]
   patches:
