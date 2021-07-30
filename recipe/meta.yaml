@@ -1,4 +1,4 @@
-{% set version = "14.17.1" %}
+{% set version = "14.17.4" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 83 %}
@@ -10,15 +10,15 @@ package:
 source:
   fn: node-v{{ version }}.tar.gz
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: f85297faa15529cf134e9cfd395371fea62e092c3fe2127f2b0fdf8504905cee  # [not win]
+  sha256: 70c75f21ac601ae9e0fd86bdfd4e13e4d302f42b4fafcd6d21804b043a571c36  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: c2264359aa15c0a95d347ebb382413a597d1698a4a2c8af73309b6e4e517ff04  # [win]
+  sha256: d82a3ca777b4dccc97aa391eb483325cda731e0ae9b3a5669dbf34bb8defde6e  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
