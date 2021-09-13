@@ -6,6 +6,8 @@ provider:
   linux_ppc64le: default
   win: default
 conda_forge_output_validation: true
+os_version:
+  linux_64: cos7
 test_on_native_only: true
 bot:
   abi_migration_branches:
