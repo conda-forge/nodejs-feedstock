@@ -3,9 +3,9 @@ MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
 macos_min_version:         # [osx and x86_64]
   - '10.14'                # [osx and x86_64]
 c_compiler_version:        # [ppc64le]
-  - '10'                   # [ppc64le]
+  - '11'                   # [ppc64le]
 cxx_compiler_version:      # [ppc64le]
-  - '10'                   # [ppc64le]
+  - '11'                   # [ppc64le]
 
 pin_run_as_build:
   # libuv is missing run_exports
