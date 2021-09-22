@@ -8,8 +8,12 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_:
-        CONFIG: linux_64_
+      linux_64_openssl1.1.1:
+        CONFIG: linux_64_openssl1.1.1
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: condaforge/linux-anvil-cos7-x86_64
+      linux_64_openssl3:
+        CONFIG: linux_64_openssl3
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360
