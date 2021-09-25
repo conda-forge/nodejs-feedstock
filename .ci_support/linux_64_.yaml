@@ -19,8 +19,6 @@ icu:
 openssl:
 - 1.1.1
 pin_run_as_build:
-  openssl:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 target_platform:
