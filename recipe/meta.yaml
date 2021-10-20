@@ -1,4 +1,4 @@
-{% set version = "16.10.0" %}
+{% set version = "17.0.1" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 93 %}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 69b09bb0c4cd9add7eb501b1625a405b15d6ce53596e98b863c8d066e0b6b202  # [not win]
+  sha256: f06242a7958b89f1bc3c7070af1ff5e477a9d3b76d2348456617f87e8f4f6988  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 269ef35a91e7e8ce107ed09ca17e70d2feb448cf46ed6dbda86ac95cb90c5344  # [win]
   patches:
@@ -20,7 +20,7 @@ source:
     - 0001-Forward-ceilf-floorf.patch  # [not win]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
