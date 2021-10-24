@@ -16,7 +16,7 @@ source:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [build_platform != target_platform]
-    - 0001-Use-HOST-instead-of-TARGET-to-determine-thread-conte.patch  # [build_platform != target_platform]
+      #- 0001-Use-HOST-instead-of-TARGET-to-determine-thread-conte.patch  # [build_platform != target_platform]
     - 0001-Forward-ceilf-floorf.patch  # [not win]
 
 build:
