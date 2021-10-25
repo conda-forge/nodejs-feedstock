@@ -1,4 +1,4 @@
-{% set version = "16.10.0" %}
+{% set version = "16.11.1" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 93 %}
@@ -9,18 +9,18 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 69b09bb0c4cd9add7eb501b1625a405b15d6ce53596e98b863c8d066e0b6b202  # [not win]
+  sha256: 8b5a54b284e524984772d34dc2efc68a10fc2f91db11390c6035ef2a9509ef2c  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 269ef35a91e7e8ce107ed09ca17e70d2feb448cf46ed6dbda86ac95cb90c5344  # [win]
+  sha256: 4d3c179b82d42e66e321c3948a4e332ed78592917a69d38b86e3a242d7e62fb7  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [build_platform != target_platform]
-    - 0001-Use-HOST-instead-of-TARGET-to-determine-thread-conte.patch  # [build_platform != target_platform]
     - 0001-Forward-ceilf-floorf.patch  # [not win]
+    - 0001-Force-include-handler-outside-simulator.patch  # [osx and arm64]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
