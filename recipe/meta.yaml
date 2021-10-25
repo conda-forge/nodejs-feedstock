@@ -35,13 +35,11 @@ requirements:
   host:
     - icu >=65  # [not win]
     - libuv >=1.33  # [not win]
-    - openssl  >=1.1.1d  # [not win]
+    - openssl  # [not win]
     - zlib  # [not win]
   run:
     - icu  # [not win]
     - libuv  # [not win]
-    - openssl  # [not win]
-    - zlib  # [not win]
   run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
