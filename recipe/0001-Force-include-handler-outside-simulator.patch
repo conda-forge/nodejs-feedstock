@@ -1,0 +1,44 @@
+From 5cc88ca0dfdeaa55a2862d1c86a1a291f7b440c9 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Mon, 25 Oct 2021 11:15:41 +0200
+Subject: [PATCH] Force-include handler-outside-simulator
+
+---
+ deps/v8/src/trap-handler/handler-outside-simulator.cc | 4 ++++
+ tools/v8_gypfiles/v8.gyp                              | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/deps/v8/src/trap-handler/handler-outside-simulator.cc b/deps/v8/src/trap-handler/handler-outside-simulator.cc
+index cc1e20ee..db287144 100644
+--- a/deps/v8/src/trap-handler/handler-outside-simulator.cc
++++ b/deps/v8/src/trap-handler/handler-outside-simulator.cc
+@@ -2,6 +2,9 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
++#if (!defined(_M_X64) && !defined(__x86_64__)) || defined(V8_TARGET_ARCH_X64)
++#warning "Do only include this file on simulator builds on x64."
++#else
+ #include "include/v8config.h"
+ #include "src/trap-handler/trap-handler-simulator.h"
+ 
+@@ -31,3 +34,4 @@ asm(
+     SYMBOL(v8_probe_memory_continuation) ":         \n"
+     // If the trap handler continues here, it wrote the landing pad in %rax.
+     "  ret                                          \n");
++#endif
+diff --git a/tools/v8_gypfiles/v8.gyp b/tools/v8_gypfiles/v8.gyp
+index 0a39f771..f1e6471e 100644
+--- a/tools/v8_gypfiles/v8.gyp
++++ b/tools/v8_gypfiles/v8.gyp
+@@ -866,6 +866,7 @@
+               'sources': [
+                 "<(V8_ROOT)/src/trap-handler/handler-inside-posix.cc",
+                 "<(V8_ROOT)/src/trap-handler/handler-outside-posix.cc",
++                "<(V8_ROOT)/src/trap-handler/handler-outside-simulator.cc",
+               ],
+             }],
+             ['OS=="win"', {
+-- 
+2.30.1 (Apple Git-130)
+
