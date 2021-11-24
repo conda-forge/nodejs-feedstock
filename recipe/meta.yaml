@@ -18,6 +18,7 @@ source:
     - less-shared-intermediate.patch  # [build_platform != target_platform]
     - 0001-Forward-ceilf-floorf.patch  # [not win]
     - 0001-Force-include-handler-outside-simulator.patch  # [osx and arm64]
+    - test-dep-shared-openssl.patch  # [not win]
 
 build:
   number: 0

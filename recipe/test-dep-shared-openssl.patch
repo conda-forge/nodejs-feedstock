@@ -1,0 +1,26 @@
+From a21683deb08bcf908292ba32c02c42828b78ef75 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Wed, 24 Nov 2021 22:06:27 +0100
+Subject: [PATCH] test_crypto_engine: depends on non-shared openssl, only build
+ with non-shared openssl
+
+---
+ node.gyp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/node.gyp b/node.gyp
+index d2337823a8..0a3c7a1c31 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -1475,7 +1475,7 @@
+     }], # end aix section
+     # TODO(RaisinTen): Enable this to build on other platforms as well.
+     ['(OS=="mac" or (OS=="linux" and target_arch=="x64")) and \
+-      node_use_openssl=="true"', {
++      node_use_openssl=="true" and node_shared_openssl=="false"', {
+       'targets': [
+         {
+           'target_name': 'test_crypto_engine',
+-- 
+2.29.2
+
