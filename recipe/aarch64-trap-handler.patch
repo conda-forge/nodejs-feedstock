@@ -1,0 +1,27 @@
+From 0ae9f7a221b5ff347904eb0d1e88e0b87199eca2 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Fri, 26 Nov 2021 22:04:02 +0100
+Subject: [PATCH] trap handler doesn't work on linux cross-compile to arm
+
+---
+ deps/v8/src/trap-handler/trap-handler.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/deps/v8/src/trap-handler/trap-handler.h b/deps/v8/src/trap-handler/trap-handler.h
+index 0b3a6e0a70..363495129d 100644
+--- a/deps/v8/src/trap-handler/trap-handler.h
++++ b/deps/v8/src/trap-handler/trap-handler.h
+@@ -25,8 +25,8 @@ namespace trap_handler {
+ // Arm64 (non-simulator) on Mac.
+ #elif V8_TARGET_ARCH_ARM64 && V8_HOST_ARCH_ARM64 && V8_OS_MACOSX
+ #define V8_TRAP_HANDLER_SUPPORTED true
+-// Arm64 simulator on x64 on Linux or Mac.
+-#elif V8_TARGET_ARCH_ARM64 && V8_HOST_ARCH_X64 && (V8_OS_LINUX || V8_OS_MACOSX)
++// Arm64 simulator on x64 on Mac.
++#elif V8_TARGET_ARCH_ARM64 && V8_HOST_ARCH_X64 && V8_OS_MACOSX
+ #define V8_TRAP_HANDLER_VIA_SIMULATOR
+ #define V8_TRAP_HANDLER_SUPPORTED true
+ // Everything else is unsupported.
+-- 
+2.29.2
+
