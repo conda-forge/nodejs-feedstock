@@ -49,7 +49,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
            exit 1
            ;;
     esac
-    
+
     EXTRA_ARGS="--cross-compiling --dest-os=$DEST_OS --dest-cpu=$DEST_ARCH"
 fi
 

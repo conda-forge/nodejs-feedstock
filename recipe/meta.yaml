@@ -19,6 +19,7 @@ source:
     - 0001-Forward-ceilf-floorf.patch  # [not win]
     - 0001-Force-include-handler-outside-simulator.patch  # [osx and arm64]
     - test-dep-shared-openssl.patch  # [not win]
+    - ppc-issignaling.patch  # [ppc64le]
 
 build:
   number: 0
