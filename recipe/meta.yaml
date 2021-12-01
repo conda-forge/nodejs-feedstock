@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: a9ee91709e5c4c3812e5897cf2af471037528b16dbd766908217af592d0e9545  # [not win]
+  sha256: ce690b637fd2e19c4961d6e726dab4797be631420bcbb76a90747779a45f0441  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: de8d90d82af888efa0e7942204539d2fca731013a2d715da954db410df58be8f  # [win]
   patches:
