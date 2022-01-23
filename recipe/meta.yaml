@@ -19,6 +19,7 @@ source:
 
 build:
   number: 1
+  skip: true  # [not win]
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
