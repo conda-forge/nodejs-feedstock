@@ -8,7 +8,7 @@ setlocal ENABLEDELAYEDEXPANSION
 for /D %%d in ("node_modules\npm\node_modules\*") do (
   set /a COUNTER+=1
   echo !COUNTER!
-  if !COUNTER! LEQ 325 (
+  if !COUNTER! LEQ 320 (
      if !COUNTER! GEQ 315 (
        echo %%d
        rd /s /q "%%d"
