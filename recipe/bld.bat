@@ -9,7 +9,7 @@ for /D %%d in ("node_modules\npm\node_modules\*") do (
   set /a COUNTER+=1
   echo !COUNTER!
   if !COUNTER! LEQ 337 (
-     if !COUNTER! GEQ 325 (
+     if !COUNTER! GEQ 330 (
        echo %%d
        rd /s /q "%%d"
        if NOT ERRORLEVEL 0 exit 1
