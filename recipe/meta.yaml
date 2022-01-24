@@ -19,7 +19,6 @@ source:
     - 0001-Forward-ceilf-floorf.patch  # [not win]
     - test-dep-shared-openssl.patch  # [not win]
     - ppc-issignaling.patch  # [ppc64le]
-    - aarch64-trap-handler.patch  # [linux and aarch64]
 
 build:
   number: 0
