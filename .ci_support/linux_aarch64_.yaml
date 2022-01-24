@@ -17,14 +17,12 @@ cxx_compiler:
 cxx_compiler_version:
 - '9'
 docker_image:
-- quay.io/condaforge/linux-anvil-aarch64
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 icu:
 - '68'
 openssl:
 - 1.1.1
 pin_run_as_build:
-  openssl:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 target_platform:
