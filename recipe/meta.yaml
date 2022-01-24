@@ -35,8 +35,7 @@ requirements:
   host:
     - icu  # [not win]
     - libuv >=1.33  # [not win]
-    - openssl  >=1.1.1d  # [not win]
-    - openssl 1.1.1  # [not win]
+    - openssl  # [not win]
     - zlib  # [not win]
   run:
     - icu  # [not win]
