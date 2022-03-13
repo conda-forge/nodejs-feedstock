@@ -10,5 +10,8 @@ conda_forge_output_validation: true
 test_on_native_only: true
 bot:
   abi_migration_branches:
-    - "16.x"
-    - "14.x"
+  - 16.x
+  - 14.x
+github:
+  branch_name: main
+  tooling_branch_name: main
