@@ -17,7 +17,6 @@ source:
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [not win]
     - 0001-Forward-ceilf-floorf.patch  # [not win]
-    - test-dep-shared-openssl.patch  # [not win]
     - ppc-issignaling.patch  # [ppc64le]
 
 build:
