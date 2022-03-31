@@ -21,7 +21,7 @@ source:
     - aarch64-trap-handler.patch  # [linux and aarch64]
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
