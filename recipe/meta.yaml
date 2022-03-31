@@ -21,7 +21,7 @@ source:
     - ppc-issignaling.patch  # [ppc64le]
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
