@@ -1,4 +1,4 @@
-{% set version = "17.8.0" %}
+{% set version = "17.9.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 102 %}
@@ -9,10 +9,10 @@ package:
 
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
-  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 3cf4ef8ede328389a6b0150eb94480fce9bdd00e23051d7bcada5af7473b28b1  # [not win]
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
+  sha256: 25d8c6559456d548823e3f7f4fae7dc8c7d5a0f7772c79c8d902528e801ba09a  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: fcb3a52c14e70ffdc5364952e1a6c40d4d02431667183604d62031790a9803d8  # [win]
+  sha256: f72fe1f0f961c598275a253b411a2fada2ad2c4e3434bcf6e9cf81228013f022  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -21,7 +21,7 @@ source:
     - ppc-issignaling.patch  # [ppc64le]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
