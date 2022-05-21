@@ -1,4 +1,4 @@
-{% set version = "17.9.0" %}
+{% set version = "18.2.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 102 %}
@@ -10,9 +10,9 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: 25d8c6559456d548823e3f7f4fae7dc8c7d5a0f7772c79c8d902528e801ba09a  # [unix]
+  sha256: bb9c117814341676edbfd7c79cfaaac2d809e760a65fe9afe050245d55bb7ca7  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: f72fe1f0f961c598275a253b411a2fada2ad2c4e3434bcf6e9cf81228013f022  # [win]
+  sha256: deaa04e8ba65e568f02452c9313b9e6ee80fcef9c0929062fc5175a401fa05ce  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
