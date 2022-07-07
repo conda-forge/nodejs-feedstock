@@ -4,7 +4,7 @@ bot:
   - 14.x
 build_platform:
   linux_aarch64: linux_64
-  # linux_ppc64le: linux_64
+  linux_ppc64le: linux_64
   osx_arm64: osx_64
 conda_forge_output_validation: true
 github:
@@ -12,7 +12,6 @@ github:
   tooling_branch_name: main
 provider:
   linux_aarch64: default
-  # FIXME: disable ppc while it's not reliable
-  # linux_ppc64le: default
+  linux_ppc64le: default
   win: default
 test_on_native_only: true
