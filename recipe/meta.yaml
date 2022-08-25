@@ -18,7 +18,7 @@ source:
     - cinttypes.patch  # [linux]
     - less-shared-intermediate.patch  # [not win]
     - 0001-Forward-ceilf-floorf.patch  # [not win]
-    - 0001-Disable-unsupported-branch-protection.patch
+    - 0001-Disable-unsupported-branch-protection.patch  # [not win]
 
 build:
   number: 0
