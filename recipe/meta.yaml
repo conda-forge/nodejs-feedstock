@@ -1,4 +1,4 @@
-{% set version = "16.14.2" %}
+{% set version = "16.15.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 93 %}
@@ -9,9 +9,9 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 082170f362c4da0e97f3a1899e3f5e4c998bbc245b803c77c6ab113a2b5cbd5f  # [not win]
+  sha256: 38e041b7249afb331663613f860b84b51852efa02b4ebff852f9610bef680d7d  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 4731da4fbb2015d414e871fa9118cabb643bdb6dbdc8a69a3ed563266ac93229  # [win]
+  sha256: dbe04e92b264468f2e4911bc901ed5bfbec35e0b27b24f0d29eff4c25e428604  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -21,7 +21,7 @@ source:
     - aarch64-trap-handler.patch  # [linux and aarch64]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
