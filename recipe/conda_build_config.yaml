@@ -11,10 +11,10 @@ docker_image:                             # [linux64]
   - condaforge/linux-anvil-cos7-x86_64    # [linux64]
 cdt_name:                                 # [linux64]
   - cos7                                  # [linux64]
-c_compiler_version:                       # [ppc64le]
-  - '8'                                   # [ppc64le]
-cxx_compiler_version:                     # [ppc64le]
-  - '8'                                   # [ppc64le]
+#c_compiler_version:                       # [ppc64le]
+#  - '8'                                   # [ppc64le]
+#cxx_compiler_version:                     # [ppc64le]
+#  - '8'                                   # [ppc64le]
 
 pin_run_as_build:
   # libuv is missing run_exports
