@@ -1,0 +1,25 @@
+From 62f71ca87394187555be05f4951b1b2d3386e20a Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 21 Sep 2022 15:04:36 +0200
+Subject: [PATCH 2/6] Use cinttypes header
+
+---
+ deps/v8/src/inspector/v8-runtime-agent-impl.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/deps/v8/src/inspector/v8-runtime-agent-impl.cc b/deps/v8/src/inspector/v8-runtime-agent-impl.cc
+index b78b641e..808d591d 100644
+--- a/deps/v8/src/inspector/v8-runtime-agent-impl.cc
++++ b/deps/v8/src/inspector/v8-runtime-agent-impl.cc
+@@ -30,7 +30,7 @@
+ 
+ #include "src/inspector/v8-runtime-agent-impl.h"
+ 
+-#include <inttypes.h>
++#include <cinttypes>
+ 
+ #include "../../third_party/inspector_protocol/crdtp/json.h"
+ #include "src/debug/debug-interface.h"
+-- 
+2.37.0 (Apple Git-136)
+
