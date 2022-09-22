@@ -1,4 +1,4 @@
-{% set version = "16.15.0" %}
+{% set version = "16.15.1" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 93 %}
@@ -9,16 +9,16 @@ package:
 
 source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [not win]
-  sha256: 38e041b7249afb331663613f860b84b51852efa02b4ebff852f9610bef680d7d  # [not win]
+  sha256: 308aee7149c4092a53c87c28ef49e23a8d1606119e79ae68333062e2a1f94208  # [not win]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: dbe04e92b264468f2e4911bc901ed5bfbec35e0b27b24f0d29eff4c25e428604  # [win]
+  sha256: e160591f562b575eb18b9b234b738f21cb7fbec5a73df1bd8062f8d0c6cef431  # [win]
   patches:
-    - linux-librt.patch  # [not win]
-    - cinttypes.patch  # [linux]
-    - less-shared-intermediate.patch  # [build_platform != target_platform]
-    - 0001-Forward-ceilf-floorf.patch  # [not win]
-    - 0001-Force-include-handler-outside-simulator.patch  # [osx and arm64]
-    - aarch64-trap-handler.patch  # [linux and aarch64]
+    - 0001-stop-removing-librt.patch  # [not win]
+    - 0002-Use-cinttypes-header.patch  # [linux]
+    - 0003-include-obj-name-in-shared-intermediate.patch  # [not win]
+    - 0004-Forward-ceilf-floorf.patch  # [not win]
+    - 0005-Force-include-handler-outside-simulator.patch  # [osx and arm64]
+    - 0006-trap-handler-doesn-t-work-on-linux-cross-compile-to-.patch  # [linux and aarch64]
 
 build:
   number: 0
