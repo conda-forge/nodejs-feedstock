@@ -58,8 +58,11 @@ requirements:
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
+  requires:
+    - gdb
   files:
     - seg_wrapper.sh
+    - backtrace
   commands:
     - ./seg_wrapper.sh node -h
     - node -v
