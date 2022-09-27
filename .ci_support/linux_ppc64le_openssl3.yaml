@@ -18,9 +18,6 @@ icu:
 - '70'
 openssl:
 - '3'
-pin_run_as_build:
-  zlib:
-    max_pin: x.x
 target_platform:
 - linux-ppc64le
 zip_keys:
