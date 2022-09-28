@@ -64,7 +64,7 @@ test:
     - seg_wrapper.sh
     - backtrace
   commands:
-    - ./seg_wrapper.sh node -h
+    - ./seg_wrapper.sh $PREFIX/bin/node -h
     - node -v
     - npm version
     - npm install -h

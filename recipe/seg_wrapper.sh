@@ -2,5 +2,7 @@
 ulimit -c unlimited
 "$@"
 if [[ $? -eq 139 ]]; then
-  gdb -q $1 core -x $(pwd)/backtrace
+  ls -l
+  file $1
+  gdb -q $1 *.core -x $(pwd)/backtrace
 fi
