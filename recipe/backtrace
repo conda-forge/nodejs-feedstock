@@ -1,2 +1,2 @@
-backtrace
+thread apply all bt
 quit
