@@ -2,8 +2,8 @@
 
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
-export CFLAGS="${CFLAGS} -ggdb"
-export CXXFLAGS="${CXXFLAGS} -ggdb"
+export CFLAGS="${CFLAGS} -g1"
+export CXXFLAGS="${CXXFLAGS} -g1"
 
 if [[ "$target_platform" == osx-* ]]; then
     # unset macosx-version-min hardcoded in clang CPPFLAGS
