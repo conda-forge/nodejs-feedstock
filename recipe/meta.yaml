@@ -18,7 +18,7 @@ source:
     - cinttypes.patch  # [linux]
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
@@ -35,8 +35,7 @@ requirements:
   host:
     - icu  # [not win]
     - libuv >=1.33  # [not win]
-    - openssl  >=1.1.1d  # [not win]
-    - openssl 1.1.1  # [not win]
+    - openssl  # [not win]
     - zlib  # [not win]
   run:
     - icu  # [not win]

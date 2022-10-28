@@ -15,6 +15,9 @@ c_compiler_version:                       # [ppc64le]
   - '8'                                   # [ppc64le]
 cxx_compiler_version:                     # [ppc64le]
   - '8'                                   # [ppc64le]
+icu:
+  - '70'
+  - '68'
 
 pin_run_as_build:
   # libuv is missing run_exports
