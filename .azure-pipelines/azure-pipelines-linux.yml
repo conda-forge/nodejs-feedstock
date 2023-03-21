@@ -12,24 +12,24 @@ jobs:
         CONFIG: linux_64_icu68
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cos7-x86_64
-      linux_64_icu70:
-        CONFIG: linux_64_icu70
+      linux_64_icu72:
+        CONFIG: linux_64_icu72
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-cos7-x86_64
       linux_aarch64_icu68:
         CONFIG: linux_aarch64_icu68
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_aarch64_icu70:
-        CONFIG: linux_aarch64_icu70
+      linux_aarch64_icu72:
+        CONFIG: linux_aarch64_icu72
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_ppc64le_icu68:
         CONFIG: linux_ppc64le_icu68
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-      linux_ppc64le_icu70:
-        CONFIG: linux_ppc64le_icu70
+      linux_ppc64le_icu72:
+        CONFIG: linux_ppc64le_icu72
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360

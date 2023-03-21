@@ -13,13 +13,13 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 icu:
-- '70'
+- '72'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
 - '10.11'
 openssl:
-- 1.1.1
+- '3'
 target_platform:
 - osx-64
 zip_keys:
