@@ -75,6 +75,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - millsks
     - minrk
     - msarahan
     - pelson
