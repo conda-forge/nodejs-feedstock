@@ -1,4 +1,4 @@
-{% set version = "18.16.1" %}
+{% set version = "18.17.1" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 108 %}
@@ -10,7 +10,7 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: 518f4c8dc23a26d8df77288d94e254b6015d792026ff9ba0c2316af255875fa5  # [unix]
+  sha256: 1157525a819c395020795ff8c49eee7472b8666cc256b45558b9cbe2e0864c35  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 145bd2f79eaa50b76559bd78266f4585e57b88dbb94613698a9514a601f84e7f  # [win]
   patches:
