@@ -11,8 +11,8 @@ jobs:
       osx_64_icu68:
         CONFIG: osx_64_icu68
         UPLOAD_PACKAGES: 'True'
-      osx_64_icu70:
-        CONFIG: osx_64_icu70
+      osx_64_icu73:
+        CONFIG: osx_64_icu73
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
