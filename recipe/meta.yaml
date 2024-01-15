@@ -1,4 +1,4 @@
-{% set version = "20.9.0" %}
+{% set version = "21.6.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 115 %}
@@ -10,9 +10,9 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: a7e6547a951406e4e546a74160ed27b26f9abd4baf7c44dd5a0fa992852d0cfa  # [unix]
+  sha256: 35e342f1607398ec54447e44590abcb235b9f6254cc6a8deefba8350c23d89b5  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 70d87dad2378c63216ff83d5a754c61d2886fc39d32ce0d2ea6de763a22d3780  # [win]
+  sha256: e00bfadcb0f0636c1f824a6f19d8c984ab5fb53619999d34433bf1a82c16e245  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
