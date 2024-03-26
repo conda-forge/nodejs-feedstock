@@ -196,6 +196,3 @@ Feedstock Maintainers
 * [@pelson](https://github.com/pelson/)
 * [@xhochy](https://github.com/xhochy/)
 
-
-<!-- dummy commit to enable rerendering -->
-
