@@ -82,7 +82,7 @@ ninja -C out/Release -j${CPU_COUNT}
 if [[ "$target_platform" != osx-* ]]; then
   cp out/Release/lib/libnode.* out/Release/
 fi
-python tools/install.py install ${PREFIX} ''
+python tools/install.py install --prefix ${PREFIX} ''
 cp out/Release/node $PREFIX/bin
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
