@@ -1,4 +1,4 @@
-{% set version = "20.9.0" %}
+{% set version = "20.12.2" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 115 %}
@@ -10,9 +10,9 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: a7e6547a951406e4e546a74160ed27b26f9abd4baf7c44dd5a0fa992852d0cfa  # [unix]
+  sha256: bc57ee721a12cc8be55bb90b4a9a2f598aed5581d5199ec3bd171a4781bfecda  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 70d87dad2378c63216ff83d5a754c61d2886fc39d32ce0d2ea6de763a22d3780  # [win]
+  sha256: 66dda1717cae30a13be6bb17ad96ee54b69f2c23c85acd9c3299b095fa26b452  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -21,7 +21,7 @@ source:
     - 0001-Disable-unsupported-branch-protection.patch  # [not win]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
