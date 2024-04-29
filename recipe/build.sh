@@ -11,6 +11,10 @@ if [[ "$target_platform" == osx-* ]]; then
 else
     # need librt for clock_gettime with nodejs >= 12.12
     export LDFLAGS="$LDFLAGS -lrt"
+
+    # https://github.com/nodejs/node/issues/52223
+    sed -i 's/define HAVE_SYS_RANDOM_H 1/undef HAVE_SYS_RANDOM_H/g' deps/cares/config/linux/ares_config.h
+    sed -i 's/define HAVE_GETRANDOM 1/undef HAVE_GETRANDOM/g' deps/cares/config/linux/ares_config.h
 fi
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
@@ -60,7 +64,7 @@ export LDFLAGS_host="$(echo $LDFLAGS | sed s@${PREFIX}@${BUILD_PREFIX}@g)"
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
-./configure \
+${BUILD_PREFIX}/bin/python configure.py \
     --ninja \
     --prefix=${PREFIX} \
     --without-node-snapshot \

@@ -1,4 +1,4 @@
-{% set version = "18.19.0" %}
+{% set version = "18.20.2" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 108 %}
@@ -10,9 +10,9 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: dd4c1dc1cb94e1e29f65a3a592247edeb8ceb23483123b0e1847d75c5f0b0c17  # [unix]
+  sha256: 68c165b9ceb7bc69dcdc75c6099723edb5ff0509215959af0775ed426174c404  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 5311913d45e1fcc3643c58d1e3926eb85437b180f025fe5857413c9f02403645  # [win]
+  sha256: 1b7dde318fad3110db1d597184e78d327816e61eef340323765d86f7481babe6  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -29,9 +29,9 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}  # [not win]
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - sysroot_linux-64 2.17  # [linux64]
     - python 3.8  # [not win]
     - git  # [linux]
     - ninja  # [not win]
@@ -53,8 +53,6 @@ requirements:
     - libuv  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
-  run_constrained:   # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:
