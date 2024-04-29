@@ -64,7 +64,7 @@ export LDFLAGS_host="$(echo $LDFLAGS | sed s@${PREFIX}@${BUILD_PREFIX}@g)"
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
-./configure \
+${BUILD_PREFIX}/bin/python configure.py \
     --ninja \
     --prefix=${PREFIX} \
     --without-node-snapshot \
