@@ -12,7 +12,7 @@ source:
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
   sha256: 68c165b9ceb7bc69dcdc75c6099723edb5ff0509215959af0775ed426174c404  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 5311913d45e1fcc3643c58d1e3926eb85437b180f025fe5857413c9f02403645  # [win]
+  sha256: 1b7dde318fad3110db1d597184e78d327816e61eef340323765d86f7481babe6  # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
