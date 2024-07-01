@@ -15,4 +15,10 @@ github:
 provider:
   linux_aarch64: default
   win: default
+  linux_64: github_actions
 test: native_and_emulated
+github_actions:
+  self_hosted: true
+  triggers:
+  - push
+  - pull_request
