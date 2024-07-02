@@ -14,5 +14,10 @@ github:
   branch_name: main
   tooling_branch_name: main
 provider:
-  win: default
+  linux_64: github_actions
 test: native_and_emulated
+github_actions:
+  self_hosted: true
+  triggers:
+  - push
+  - pull_request

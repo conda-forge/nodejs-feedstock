@@ -1,8 +1,5 @@
 c_stdlib_version:  # [(osx and x86_64) or linux64]
   - '10.15'        # [osx and x86_64]
   - '2.17'         # [linux64]
-pin_run_as_build:
-  # libuv is missing run_exports
-  libuv:
-    max_pin: x.x
-    min_pin: x.x.x
+github_actions_labels:
+- cirun-openstack-cpu-large
