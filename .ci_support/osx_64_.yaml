@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.15'
+MACOSX_SDK_VERSION:
+- '10.15'
 c_compiler:
 - clang
 c_compiler_version:
@@ -16,12 +18,12 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '16'
+github_actions_labels:
+- cirun-openstack-cpu-large
 icu:
 - '73'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.15'
 openssl:
 - '3'
 target_platform:
@@ -30,4 +32,4 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 zlib:
-- '1.2'
+- '1'
