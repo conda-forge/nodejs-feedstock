@@ -1,6 +1,7 @@
-{% set version = "18.20.2" %}
+{% set version = "18.20.3" %}
 
-# NODE_MODULE_VERSION set in src/node_version.h
+# needs to match the NODE_MODULE_VERSION in
+# https://github.com/nodejs/node/blob/v{{ version }}/src/node_version.h
 {% set NODE_MODULE_VERSION = 108 %}
 
 package:
@@ -9,10 +10,10 @@ package:
 
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
-  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: 68c165b9ceb7bc69dcdc75c6099723edb5ff0509215959af0775ed426174c404  # [unix]
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz       # [unix]
+  sha256: f35c9b9923c7b2e9243e7e2d10cd9ae61fbd5b925df3debbb72d5a70dbff555d     # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 1b7dde318fad3110db1d597184e78d327816e61eef340323765d86f7481babe6  # [win]
+  sha256: 8e91df18904f9cc2950dca17b737e779dbd780c7b7a2192458d42af901c8f2d3     # [win]
   patches:
     - linux-librt.patch  # [not win]
     - cinttypes.patch  # [linux]
@@ -67,6 +68,7 @@ test:
 
 about:
   home: https://nodejs.org/
+  dev_url: https://github.com/nodejs/node
   license: MIT
   license_file: LICENSE
   summary: a platform for easily building fast, scalable network applications
