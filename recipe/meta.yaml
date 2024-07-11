@@ -1,6 +1,7 @@
 {% set version = "18.20.3" %}
 
-# NODE_MODULE_VERSION set in src/node_version.h
+# needs to match the NODE_MODULE_VERSION in
+# https://github.com/nodejs/node/blob/v{{ version }}/src/node_version.h
 {% set NODE_MODULE_VERSION = 108 %}
 
 package:
