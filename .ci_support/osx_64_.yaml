@@ -21,7 +21,7 @@ cxx_compiler_version:
 github_actions_labels:
 - cirun-openstack-cpu-large
 icu:
-- '73'
+- '75'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openssl:
