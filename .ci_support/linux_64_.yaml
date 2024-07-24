@@ -19,7 +19,7 @@ cxx_compiler_version:
 docker_image:
 - condaforge/linux-anvil-cos7-x86_64
 icu:
-- '73'
+- '75'
 openssl:
 - '3'
 target_platform:
