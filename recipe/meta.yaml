@@ -20,6 +20,7 @@ source:
     - 0005-Force-include-handler-outside-simulator.patch  # [osx and arm64]
     - 0006-trap-handler-doesn-t-work-on-linux-cross-compile-to-.patch  # [linux and aarch64]
     - 0007-Remove-usage-of-msign-return-address-all.patch  # [linux and aarch64]
+    - 0001-Use-C-17.patch
 
 build:
   number: 3
