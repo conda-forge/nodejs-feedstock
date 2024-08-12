@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/cares
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/cares/config
 
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
