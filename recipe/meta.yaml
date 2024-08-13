@@ -20,9 +20,10 @@ source:
     - 0005-Force-include-handler-outside-simulator.patch  # [osx and arm64]
     - 0006-trap-handler-doesn-t-work-on-linux-cross-compile-to-.patch  # [linux and aarch64]
     - 0007-Remove-usage-of-msign-return-address-all.patch  # [linux and aarch64]
+    - 0001-Use-C-17.patch  # [not win]
 
 build:
-  number: 2
+  number: 3
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
@@ -30,9 +31,9 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}  # [not win]
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - sysroot_linux-64 2.17  # [linux64]
     - python 3.8  # [not win]
     - git  # [linux]
     - ninja  # [not win]
@@ -54,8 +55,6 @@ requirements:
     - libuv  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
-  run_constrained:   # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:

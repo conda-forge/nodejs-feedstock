@@ -1,11 +1,5 @@
-MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
-  - '10.14'                # [osx and x86_64]
-macos_min_version:         # [osx and x86_64]
-  - '10.14'                # [osx and x86_64]
-c_compiler_version:        # [osx]
-  - '15'                   # [osx]
-cxx_compiler_version:      # [osx]
-  - '15'                   # [osx]
+c_stdlib_version:      # [osx and x86_64]
+  - '10.14'            # [osx and x86_64]
 
 cudnn:                                    # [linux64]
   - undefined                             # [linux64]
@@ -19,9 +13,3 @@ c_compiler_version:                       # [ppc64le]
   - '8'                                   # [ppc64le]
 cxx_compiler_version:                     # [ppc64le]
   - '8'                                   # [ppc64le]
-
-pin_run_as_build:
-  # libuv is missing run_exports
-  libuv:
-    max_pin: x.x
-    min_pin: x.x.x
