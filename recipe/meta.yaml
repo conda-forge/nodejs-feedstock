@@ -21,7 +21,7 @@ source:
     - 0001-Disable-unsupported-branch-protection.patch  # [not win]
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
@@ -29,9 +29,9 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}  # [not win]
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - sysroot_linux-64 2.17  # [linux64]
     - python 3.8  # [not win]
     - git  # [linux]
     - ninja  # [not win]
@@ -56,8 +56,6 @@ requirements:
     - libuv  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
-  run_constrained:   # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:
