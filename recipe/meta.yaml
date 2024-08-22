@@ -1,4 +1,4 @@
-{% set version = "22.6.0" %}
+{% set version = "22.7.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 127 %}
@@ -10,16 +10,16 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: af4a8747651385515163db5da0d2e217da15cf7c832672b234128ed5118f086d  # [unix]
+  sha256: 7a7c99282d59866d971b2da12c99596cb15782b9c3efe2e2146390c14f4d490e  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 1fdb0b8e59c98157ba927d51ef7eb050f9459beddc64ebc5a8897b90fd1f46f6  # [win]
+  sha256: 3fc638727974262b4f65a6b1b43c22fb2d80671cdcb50e1237e0b05d1330aaf7  # [win]
   patches:
     - patches/0001-stop-removing-librt.patch  # [not win]
     - patches/0002-include-obj-name-in-shared-intermediate.patch  # [not win]
     - patches/0003-Forward-ceilf-floorf.patch  # [not win]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
