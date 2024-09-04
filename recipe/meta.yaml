@@ -1,4 +1,4 @@
-{% set version = "22.7.0" %}
+{% set version = "22.8.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 127 %}
@@ -10,9 +10,9 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: 7a7c99282d59866d971b2da12c99596cb15782b9c3efe2e2146390c14f4d490e  # [unix]
+  sha256: cd5a5bd63c6c0a44278c9da0126e5d2c06a688462f18ed44f314a346a46e7ec5  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 3fc638727974262b4f65a6b1b43c22fb2d80671cdcb50e1237e0b05d1330aaf7  # [win]
+  sha256: d6e1c4fca93997224cac0bec09b4201aa018f50171d38c6b85abe483012839c9  # [win]
   patches:
     - patches/0001-stop-removing-librt.patch  # [not win]
     - patches/0002-include-obj-name-in-shared-intermediate.patch  # [not win]
