@@ -1,4 +1,4 @@
-{% set version = "20.12.2" %}
+{% set version = "20.17.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 115 %}
@@ -10,18 +10,17 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: bc57ee721a12cc8be55bb90b4a9a2f598aed5581d5199ec3bd171a4781bfecda  # [unix]
+  sha256: 409bda5f1896c7c20866610d778d1760991884ad2e7940837cd3f2854cf73747  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 66dda1717cae30a13be6bb17ad96ee54b69f2c23c85acd9c3299b095fa26b452  # [win]
   patches:
-    - linux-librt.patch  # [not win]
-    - cinttypes.patch  # [linux]
-    - less-shared-intermediate.patch  # [not win]
-    - 0001-Forward-ceilf-floorf.patch  # [not win]
-    - 0001-Disable-unsupported-branch-protection.patch  # [not win]
+    - patches/0001-stop-removing-librt.patch  # [unix]
+    - patches/0002-Include-cinttypes-instead-of-inttypes.h.patch  # [unix]
+    - patches/0003-include-obj-name-in-shared-intermediate.patch  # [unix]
+    - patches/0004-Forward-ceilf-floorf.patch  # [unix]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
