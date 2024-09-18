@@ -1,4 +1,4 @@
-{% set version = "18.20.3" %}
+{% set version = "18.20.4" %}
 
 # needs to match the NODE_MODULE_VERSION in
 # https://github.com/nodejs/node/blob/v{{ version }}/src/node_version.h
@@ -11,7 +11,7 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz       # [unix]
-  sha256: f35c9b9923c7b2e9243e7e2d10cd9ae61fbd5b925df3debbb72d5a70dbff555d     # [unix]
+  sha256: 349259af6821f730bc4ca3a0e6576efc75ba86e546d118629a5b75eb8ebc3a0b     # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
   sha256: 8e91df18904f9cc2950dca17b737e779dbd780c7b7a2192458d42af901c8f2d3     # [win]
   patches:
