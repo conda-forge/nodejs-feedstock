@@ -1,0 +1,22 @@
+From 9b2e0487bc46f1515af56aba6622c8e9f3084768 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 18 Sep 2024 12:58:23 +0200
+Subject: [PATCH 2/4] Include cinttypes instead of inttypes.h
+
+---
+ deps/v8/src/inspector/v8-runtime-agent-impl.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/deps/v8/src/inspector/v8-runtime-agent-impl.cc b/deps/v8/src/inspector/v8-runtime-agent-impl.cc
+index 9a1a8454..9b7ad87c 100644
+--- a/deps/v8/src/inspector/v8-runtime-agent-impl.cc
++++ b/deps/v8/src/inspector/v8-runtime-agent-impl.cc
+@@ -30,7 +30,7 @@
+ 
+ #include "src/inspector/v8-runtime-agent-impl.h"
+ 
+-#include <inttypes.h>
++#include <cinttypes>
+ 
+ #include "../../third_party/inspector_protocol/crdtp/json.h"
+ #include "include/v8-container.h"
