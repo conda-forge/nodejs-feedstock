@@ -1,3 +1,7 @@
 c_stdlib_version:  # [linux64 or (osx and x86_64)]
   - '2.17'         # [linux64]
   - '10.15'        # [osx and x86_64]
+c_compiler_version:    # [osx]
+  - 15                 # [osx]
+cxx_compiler_version:  # [osx]
+  - 15                 # [osx]

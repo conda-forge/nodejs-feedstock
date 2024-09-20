@@ -44,13 +44,13 @@ requirements:
     - libuv  # [build_platform != target_platform]
     - openssl  # [build_platform != target_platform]
     - zlib  # [build_platform != target_platform]
-    - libcxx-devel  # [osx]
+    - libcxx-devel {{ cxx_compiler_version }}  # [osx]
   host:
     - icu  # [not win]
     - libuv  # [not win]
     - openssl  # [not win]
     - zlib  # [not win]
-    - libcxx-devel  # [osx]
+    - libcxx-devel {{ cxx_compiler_version }}  # [osx]
   run:
     - icu  # [not win]
     - libuv  # [not win]
