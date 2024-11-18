@@ -62,6 +62,9 @@ fi
 export CC_host=$CC_FOR_BUILD
 export CXX_host=$CXX_FOR_BUILD
 export AR_host=$($CC_FOR_BUILD -print-prog-name=ar)
+if [[ "$target_platform" == osx-* ]]; then
+  export CFLAGS_host="-fno-define-target-os-macros"
+fi
 export LDFLAGS_host="$(echo $LDFLAGS | sed s@${PREFIX}@${BUILD_PREFIX}@g)"
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
