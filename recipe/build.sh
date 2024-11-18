@@ -8,6 +8,8 @@ if [[ "$target_platform" == osx-* ]]; then
     export CPPFLAGS="$(echo ${CPPFLAGS:-} | sed -E 's@\-mmacosx\-version\-min=[^ ]*@@g')"
     export CPPFLAGS="${CPPFLAGS} -D_DARWIN_C_SOURCE"
     echo "CPPFLAGS=$CPPFLAGS"
+    # See also https://gitlab.kitware.com/cmake/cmake/-/issues/25755
+    export CFLAGS="${CFLAGS} -fno-define-target-os-macros"
 else
     # need librt for clock_gettime with nodejs >= 12.12
     export LDFLAGS="$LDFLAGS -lrt"
@@ -60,6 +62,9 @@ fi
 export CC_host=$CC_FOR_BUILD
 export CXX_host=$CXX_FOR_BUILD
 export AR_host=$($CC_FOR_BUILD -print-prog-name=ar)
+if [[ "$target_platform" == osx-* ]]; then
+  export CFLAGS_host="-fno-define-target-os-macros"
+fi
 export LDFLAGS_host="$(echo $LDFLAGS | sed s@${PREFIX}@${BUILD_PREFIX}@g)"
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
