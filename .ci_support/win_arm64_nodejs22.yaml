@@ -1,0 +1,10 @@
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+github_actions_labels:
+- cirun-openstack-cpu-large
+nodejs:
+- '22'
+target_platform:
+- win-arm64
