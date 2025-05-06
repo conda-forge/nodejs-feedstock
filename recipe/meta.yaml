@@ -11,8 +11,10 @@ source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
   sha256: 5bad8ced873eef3b32e7daee703156bce9224920ac6044f4232f5393df0628b8  # [unix]
-  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [win]
-  sha256: 56e5aacdeee7168871721b75819ccacf2367de8761b78eaceacdecd41e04ca03  # [win]
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [target_platform == "win-64"]
+  sha256: 56e5aacdeee7168871721b75819ccacf2367de8761b78eaceacdecd41e04ca03  # [target_platform == "win-64"]
+  url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-arm64.zip  # [target_platform == "win-arm64"]
+  sha256: 7c03744df29e81c34043a956969b3afc34171d3ab85e25fc737eb1860222444f  # [target_platform == "win-arm64"]
   patches:
     - patches/0001-stop-removing-librt.patch  # [unix]
     - patches/0002-Include-cinttypes-instead-of-inttypes.h.patch  # [unix]
