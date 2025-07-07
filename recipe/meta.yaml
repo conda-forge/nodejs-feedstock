@@ -70,6 +70,7 @@ test:
 
 about:
   home: https://nodejs.org/
+  dev_url: https://github.com/nodejs/node
   license: MIT
   license_file: LICENSE
   summary: a platform for easily building fast, scalable network applications
