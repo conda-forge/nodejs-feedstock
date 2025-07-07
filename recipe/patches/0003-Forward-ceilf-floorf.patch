@@ -1,4 +1,4 @@
-From 1949e551b852811bd35e1a23cfdfde8d78a52ace Mon Sep 17 00:00:00 2001
+From 580573cb92139ffb2b1fd8cb974fd453b6df84d0 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Thu, 15 Jul 2021 11:12:25 +0000
 Subject: [PATCH 3/3] Forward ceilf/floorf
@@ -8,7 +8,7 @@ Subject: [PATCH 3/3] Forward ceilf/floorf
  1 file changed, 10 insertions(+)
 
 diff --git a/deps/v8/src/execution/ppc/simulator-ppc.cc b/deps/v8/src/execution/ppc/simulator-ppc.cc
-index e78f6ad7..c799c97c 100644
+index e78f6ad7dc..c799c97c91 100644
 --- a/deps/v8/src/execution/ppc/simulator-ppc.cc
 +++ b/deps/v8/src/execution/ppc/simulator-ppc.cc
 @@ -28,6 +28,16 @@
