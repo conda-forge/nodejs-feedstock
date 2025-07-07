@@ -9,6 +9,8 @@ Package license: MIT
 
 Summary: a platform for easily building fast, scalable network applications
 
+Development: https://github.com/nodejs/node
+
 Current build status
 ====================
 
