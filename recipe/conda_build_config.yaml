@@ -13,3 +13,5 @@ c_compiler_version:                       # [ppc64le]
   - '8'                                   # [ppc64le]
 cxx_compiler_version:                     # [ppc64le]
   - '8'                                   # [ppc64le]
+nodejs:
+  - '*'
