@@ -32,7 +32,8 @@ requirements:
     - {{ stdlib('c') }}      # [not win]
     - {{ compiler('c') }}    # [not win]
     - {{ compiler('cxx') }}  # [not win]
-    - python 3.8  # [not win]
+    # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
+    - python 3.9  # [not win]
     - git  # [linux]
     - ninja  # [not win]
     - pkg-config  # [not win]
