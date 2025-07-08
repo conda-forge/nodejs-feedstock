@@ -3,3 +3,7 @@ c_stdlib_version:                                   # [(osx and x86_64) or linux
   - "2.28"                                          # [linux]
 github_actions_labels:
 - cirun-openstack-cpu-large
+
+# void creating spurious jobs due to multiple global pins for the package we're building here
+nodejs:
+  - "*"
