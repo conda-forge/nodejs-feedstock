@@ -1,7 +1,7 @@
 {% set version = "24.3.0" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
-{% set NODE_MODULE_VERSION = 138 %}
+{% set NODE_MODULE_VERSION = 137 %}
 
 package:
   name: nodejs
