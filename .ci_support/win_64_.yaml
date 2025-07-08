@@ -5,6 +5,6 @@ channel_targets:
 github_actions_labels:
 - cirun-openstack-cpu-large
 nodejs:
-- '20'
+- '*'
 target_platform:
 - win-64
