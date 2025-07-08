@@ -8,17 +8,11 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_nodejs20:
-        CONFIG: win_64_nodejs20
+      win_64_:
+        CONFIG: win_64_
         UPLOAD_PACKAGES: 'True'
-      win_64_nodejs22:
-        CONFIG: win_64_nodejs22
-        UPLOAD_PACKAGES: 'True'
-      win_arm64_nodejs20:
-        CONFIG: win_arm64_nodejs20
-        UPLOAD_PACKAGES: 'True'
-      win_arm64_nodejs22:
-        CONFIG: win_arm64_nodejs22
+      win_arm64_:
+        CONFIG: win_arm64_
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:

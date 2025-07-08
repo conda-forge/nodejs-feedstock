@@ -3,6 +3,6 @@ channel_sources:
 channel_targets:
 - conda-forge main
 nodejs:
-- '22'
+- '*'
 target_platform:
-- win-arm64
+- win-64
