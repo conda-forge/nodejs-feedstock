@@ -37,6 +37,7 @@ requirements:
     - git  # [linux]
     - ninja  # [not win]
     - pkg-config  # [not win]
+    - sysroot_{{ build_platform }} {{ c_stdlib_version }}  # [linux and build_platform != target_platform]
 
     # libuv is a bootstrap dependency in js2c
     # starting with 20.3 (https://github.com/nodejs/node/pull/46997)
