@@ -19,6 +19,9 @@ github_actions:
   triggers:
   - push
   - pull_request
+linter:
+  skip:
+    - lint_stdlib
 provider:
   linux_64: github_actions
 test: native_and_emulated

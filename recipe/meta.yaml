@@ -37,6 +37,7 @@ requirements:
     - git  # [linux]
     - ninja  # [not win]
     - pkg-config  # [not win]
+    # could be handled by https://github.com/conda-forge/linux-sysroot-feedstock/pull/87
     - sysroot_{{ build_platform }} {{ c_stdlib_version }}  # [linux and build_platform != target_platform]
 
     # libuv is a bootstrap dependency in js2c
