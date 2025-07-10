@@ -1,8 +1,4 @@
 bot:
-  abi_migration_branches:
-  - 16.x
-  - 18.x
-  - 20.x
   automerge: true
 build_platform:
   linux_aarch64: linux_64
@@ -22,3 +18,5 @@ github_actions:
 provider:
   linux_64: github_actions
 test: native_and_emulated
+conda_install_tool: pixi
+conda_build_tool: rattler-build
