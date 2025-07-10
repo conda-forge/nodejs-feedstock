@@ -21,11 +21,11 @@ source:
         - patches/0003-Forward-ceilf-floorf.patch
   - if: target_platform == "win-64"
     then:
-      url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip
+      url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
       sha256: c0c8efbca1b57e5b074bbdf7cef1ccca40979d6b46e5bcadaad5d4b07cbb3b10
   - if: target_platform == "win-arm64"
     then:
-      url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-arm64.zip
+      url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-arm64.zip
       sha256: 95ff08f6b2763d8491faba46b3a0ba1fb2045e029484494235b20b17c9053208
 
 build:
