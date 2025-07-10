@@ -60,7 +60,7 @@ requirements:
         - openssl
         - zlib
   host:
-     - if: not win
+    - if: not win
       then:
         - icu
         - libuv
