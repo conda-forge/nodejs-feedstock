@@ -40,7 +40,7 @@ requirements:
       then: git
     # could be handled by https://github.com/conda-forge/linux-sysroot-feedstock/pull/87
     - if: linux and build_platform != target_platform
-      then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}
+      then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}.*
     - if: unix
       then: 
         - ${{ stdlib('c') }}
