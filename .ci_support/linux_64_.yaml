@@ -22,8 +22,6 @@ github_actions_labels:
 - cirun-openstack-cpu-large
 icu:
 - '75'
-nodejs:
-- '*'
 openssl:
 - '3'
 target_platform:

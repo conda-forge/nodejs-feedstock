@@ -24,8 +24,6 @@ icu:
 - '75'
 macos_machine:
 - arm64-apple-darwin20.0.0
-nodejs:
-- '*'
 openssl:
 - '3'
 target_platform:
