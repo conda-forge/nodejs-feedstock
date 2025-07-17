@@ -29,7 +29,7 @@ source:
       sha256: e6ebdac17e1c25c9722c85647f1f07bb1ee160b9fb9cfb9a9214f20703981ea0
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
@@ -38,10 +38,7 @@ requirements:
   build:
     - if: linux
       then:
-    # could be handled by https://github.com/conda-forge/linux-sysroot-feedstock/pull/87
         - git
-        - if: build_platform != target_platform
-          then: sysroot_${{ build_platform }} ${{ c_stdlib_version }}.*
     - if: unix
       then:
         - ${{ stdlib('c') }}
