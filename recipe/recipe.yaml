@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 22.17.0
+  version: 22.17.1
   # NODE_MODULE_VERSION set in src/node_version.h
   NODE_MODULE_VERSION: 127
 
@@ -14,7 +14,7 @@ source:
   - if: unix
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}.tar.gz
-      sha256: f8bf095ff559033edf04108fb1f14f72e2be337c609d4f83e8af1e299af7f4b4
+      sha256: 167539d86368bb911488f888a05355df5002b302285d353179c9dd957233add5
       patches:
         - patches/0001-stop-removing-librt.patch
         - patches/0002-include-obj-name-in-shared-intermediate.patch
@@ -22,14 +22,14 @@ source:
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
-      sha256: 721ab118a3aac8584348b132767eadf51379e0616f0db802cc1e66d7f0d98f85
+      sha256: b1fdb5635ba860f6bf71474f2ca882459a582de49b1d869451e3ad188e3943eb
   - if: target_platform == "win-arm64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-arm64.zip
-      sha256: 78355dc9ca117bb71d3f081e4b1b281855e2b134f3939bb0ca314f7567b0e621
+      sha256: 588d42c7c90eecf14ed4fc126a64cc70993e3a002f93e26be9c979cdc516b0d3
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
