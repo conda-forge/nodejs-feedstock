@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "24.8.0"
+  version: "24.9.0"
   # NODE_MODULE_VERSION set in src/node_version.h
   NODE_MODULE_VERSION: 137
 
@@ -14,7 +14,7 @@ source:
   - if: unix
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}.tar.gz
-      sha256: 6e9e8c931b5028a755e6c4e1edaf14296001ae8bbb35976a3896f59e7fd797c7
+      sha256: 3c868d88377cb05ed87674a6af6add3e04733dd429c3370620a5a6c547fe6460
       patches:
         - patches/0001-stop-removing-librt.patch
         - patches/0002-include-obj-name-in-shared-intermediate.patch
@@ -22,11 +22,11 @@ source:
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
-      sha256: 970ecc121a16f546174b6a870215ca4cc0de33f8a616b42c16c8c02e66b07d05
+      sha256: 6873514c3e6a012917cc6f95ce48a6289253370d025f1b69db290d70feebfa6e
   - if: target_platform == "win-arm64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-arm64.zip
-      sha256: da63ba146c455eb74b7f5c6e8f45355d01b14d9bbab4054bdf250fc4e9f5d008
+      sha256: ead06448c62743d2b872574450c6b3cf1328d87f16e8057d7cea9a797170b160
 
 build:
   number: 0
