@@ -69,15 +69,27 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
     --prefix=${PREFIX} \
     --without-node-snapshot \
     --shared \
+    --shared-brotli \
+    --shared-cares \
     --shared-libuv \
+    --shared-nghttp2 \
     --shared-openssl \
+    --shared-sqlite \
     --shared-zlib \
+    --shared-zstd \
     --with-intl=system-icu \
     ${EXTRA_ARGS}
 
 if [[ "${target_platform}" == "linux-ppc64le" ]]; then
   for ninja_build in `find out/Release/obj.host/ -name '*.ninja'`; do
     sed -ie 's/-mminimal-toc//g' ${ninja_build}
+  done
+fi
+
+if [[ "${target_platform}" != "${build_platform}" ]]; then
+  # Don't optimize code for the build host so much
+  for ninja_build in `find out/Release/obj.host/ -name '*.ninja'`; do
+    sed -ie 's/-O3/-O1/g' ${ninja_build}
   done
 fi
 
