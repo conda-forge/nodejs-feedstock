@@ -89,7 +89,7 @@ fi
 if [[ "${target_platform}" != "${build_platform}" ]]; then
   # Don't optimize code for the build host so much
   for ninja_build in `find out/Release/obj.host/ -name '*.ninja'`; do
-    sed -ie 's/-O3/-O1/g' ${ninja_build}
+    sed -ie 's/-O3/-O0/g' ${ninja_build}
   done
 fi
 
