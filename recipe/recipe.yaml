@@ -29,7 +29,7 @@ source:
       sha256: ead06448c62743d2b872574450c6b3cf1328d87f16e8057d7cea9a797170b160
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
@@ -55,16 +55,27 @@ requirements:
     # when cross-compiling
     - if: build_platform != target_platform
       then:
+        - brotli
+        - c-ares
         - icu
-        - openssl
-        - zlib
-  host:
-    - if: not win
-      then:
-        - icu
+        - libnghttp2
+        - libsqlite
         - libuv
         - openssl
         - zlib
+        - zstd
+  host:
+    - if: not win
+      then:
+        - brotli
+        - c-ares
+        - icu
+        - libnghttp2
+        - libsqlite
+        - libuv
+        - openssl
+        - zlib
+        - zstd
   run_exports:
     - ${{ pin_subpackage('nodejs', upper_bound='x') }}
 
