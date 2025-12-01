@@ -204,4 +204,5 @@ Feedstock Maintainers
 * [@msarahan](https://github.com/msarahan/)
 * [@pelson](https://github.com/pelson/)
 * [@xhochy](https://github.com/xhochy/)
+* [@ytausch](https://github.com/ytausch/)
 
