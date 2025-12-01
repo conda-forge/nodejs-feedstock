@@ -1,5 +1,5 @@
 brotli:
-- '1.0'
+- '1.1'
 c_ares:
 - '1'
 c_compiler:
@@ -27,7 +27,7 @@ icu:
 libsqlite:
 - '3'
 openssl:
-- '3'
+- '3.5'
 target_platform:
 - linux-64
 zip_keys:

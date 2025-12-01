@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 brotli:
-- '1.0'
+- '1.1'
 c_ares:
 - '1'
 c_compiler:
@@ -31,7 +31,7 @@ libsqlite:
 macos_machine:
 - arm64-apple-darwin20.0.0
 openssl:
-- '3'
+- '3.5'
 target_platform:
 - osx-arm64
 zip_keys:
