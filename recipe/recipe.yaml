@@ -3,7 +3,7 @@ schema_version: 1
 context:
   version: "25.2.1"
   # NODE_MODULE_VERSION set in src/node_version.h
-  NODE_MODULE_VERSION: 137
+  NODE_MODULE_VERSION: 141
 
 package:
   name: nodejs
@@ -48,6 +48,7 @@ requirements:
         - python 3.9.*
         - ninja
         - pkg-config
+        - sed
     # libuv is a bootstrap dependency in js2c
     # starting with 20.3 (https://github.com/nodejs/node/pull/46997)
     - libuv
