@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+set -exuo pipefail
+
+# Make the abseil target empty
+cp $RECIPE_DIR/abseil.gyp tools/v8_gypfiles/abseil.gyp
+
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
 
@@ -18,7 +23,7 @@ else
     sed -i 's/define HAVE_GETRANDOM 1/undef HAVE_GETRANDOM/g' deps/cares/config/linux/ares_config.h
 fi
 
-if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
     # see https://github.com/nodejs/node/blob/0a993e1f24beea678769bc07099f05a1ed27334d/configure.py#L1058-L1068
     case $ARCH in
         64)
@@ -67,6 +72,7 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
 ./configure \
     --ninja \
+    --verbose \
     --prefix=${PREFIX} \
     --without-node-snapshot \
     --shared \
@@ -79,7 +85,7 @@ echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
     --shared-zlib \
     --shared-zstd \
     --with-intl=system-icu \
-    ${EXTRA_ARGS}
+    ${EXTRA_ARGS:-}
 
 if [[ "${target_platform}" == "linux-ppc64le" ]]; then
   for ninja_build in `find out/Release/obj.host/ -name '*.ninja'`; do
@@ -107,12 +113,12 @@ fi
 python tools/install.py install --dest-dir ${PREFIX} --prefix ''
 cp out/Release/node $PREFIX/bin
 
-if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" != "1" ]]; then
   node -v
   npm version
 fi
 
-if [[ "$target_platform" != osx-* ]]; then
+if [[ "${target_platform}" != osx-* ]]; then
   # Get rid of OSX specific files that confuse conda-build
   rm -rf $PREFIX/lib/node_modules/npm/node_modules/term-size/vendor/macos/term-size
 fi

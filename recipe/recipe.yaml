@@ -19,6 +19,7 @@ source:
         - patches/0001-stop-removing-librt.patch
         - patches/0002-include-obj-name-in-shared-intermediate.patch
         - patches/0003-Forward-ceilf-floorf.patch
+        - patches/0004-Support-System-abseil-cpp.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
@@ -56,6 +57,7 @@ requirements:
     # when cross-compiling
     - if: build_platform != target_platform
       then:
+        - libabseil
         - brotli
         - c-ares
         - icu
@@ -68,6 +70,7 @@ requirements:
   host:
     - if: not win
       then:
+        - libabseil
         - brotli
         - c-ares
         - icu
