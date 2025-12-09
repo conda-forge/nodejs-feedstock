@@ -24,6 +24,8 @@ github_actions_labels:
 - cirun-openstack-cpu-large
 icu:
 - '75'
+libabseil:
+- '20250127'
 libsqlite:
 - '3'
 openssl:
