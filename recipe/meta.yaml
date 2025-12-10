@@ -1,4 +1,4 @@
-{% set version = "20.19.5" %}
+{% set version = "20.19.6" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 115 %}
@@ -10,11 +10,11 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: b34d3f57666d91deb6a148b604d7f2f4051d540087e9f6c627dedc1fcb866d5a  # [unix]
+  sha256: f72ccde62e6fda0090d79097ca660c1266a6354b22f628b3a95d395f0d86a2b1  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [target_platform == "win-64"]
-  sha256: c48159529572a5a947eef2d55d6485dfdc4ce8e67216402e2f6de52ad5d95695  # [target_platform == "win-64"]
+  sha256: f72ccde62e6fda0090d79097ca660c1266a6354b22f628b3a95d395f0d86a2b1  # [target_platform == "win-64"]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-arm64.zip  # [target_platform == "win-arm64"]
-  sha256: 5010e32f6b40699b27dc5fa1d8bb9d77bdcd55e9f62d2baa5d83833d20fa41c6  # [target_platform == "win-arm64"]
+  sha256: f72ccde62e6fda0090d79097ca660c1266a6354b22f628b3a95d395f0d86a2b1  # [target_platform == "win-arm64"]
   patches:
     - patches/0001-stop-removing-librt.patch  # [unix]
     - patches/0002-Include-cinttypes-instead-of-inttypes.h.patch  # [unix]
@@ -22,7 +22,7 @@ source:
     - patches/0004-Forward-ceilf-floorf.patch  # [unix]
 
 build:
-  number: 1
+  number: 0
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
