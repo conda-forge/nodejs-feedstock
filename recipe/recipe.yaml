@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "24.10.0"
+  version: "24.11.1"
   # NODE_MODULE_VERSION set in src/node_version.h
   NODE_MODULE_VERSION: 137
 
