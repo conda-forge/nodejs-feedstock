@@ -1,0 +1,22 @@
+From cbd616b087fcce07bad491bb1f9dfda038288aed Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Tue, 9 Dec 2025 12:09:37 +0100
+Subject: [PATCH 4/4] Support System abseil-cpp
+
+---
+ configure.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.py b/configure.py
+index a752897e..8c454427 100755
+--- a/configure.py
++++ b/configure.py
+@@ -2322,7 +2322,7 @@ def make_bin_override():
+ output = {
+   'variables': {},
+   'include_dirs': [],
+-  'libraries': [],
++  'libraries': ['-labsl_synchronization', '-labsl_raw_hash_set', '-labsl_throw_delegate', '-labsl_hash', '-labsl_kernel_timeout_internal'],
+   'defines': [],
+   'cflags': [],
+ }
