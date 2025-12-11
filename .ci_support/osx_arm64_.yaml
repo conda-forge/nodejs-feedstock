@@ -27,7 +27,7 @@ github_actions_labels:
 icu:
 - '75'
 libabseil:
-- '20250127'
+- '20250512'
 libsqlite:
 - '3'
 macos_machine:
