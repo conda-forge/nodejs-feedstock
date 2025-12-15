@@ -30,6 +30,7 @@ source:
 
 build:
   number: 0
+  skip: not osx
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
