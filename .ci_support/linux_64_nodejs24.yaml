@@ -19,11 +19,11 @@ docker_image:
 icu:
 - '75'
 nodejs:
-- '20'
+- '24'
 openssl:
 - '3.5'
 target_platform:
-- linux-aarch64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
