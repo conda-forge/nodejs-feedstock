@@ -21,13 +21,13 @@ cxx_compiler_version:
 icu:
 - '75'
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 nodejs:
-- '20'
+- '24'
 openssl:
 - '3.5'
 target_platform:
-- osx-arm64
+- osx-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
