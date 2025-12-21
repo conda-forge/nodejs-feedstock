@@ -19,7 +19,7 @@ docker_image:
 github_actions_labels:
 - cirun-openstack-cpu-large
 icu:
-- '75'
+- '78'
 openssl:
 - '3.5'
 target_platform:
