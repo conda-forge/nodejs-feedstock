@@ -18,10 +18,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
-github_actions_labels:
-- cirun-openstack-cpu-large
 icu:
-- '75'
+- '78'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openssl:
