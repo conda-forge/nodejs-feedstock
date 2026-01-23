@@ -25,7 +25,7 @@ cxx_compiler_version:
 github_actions_labels:
 - cirun-openstack-cpu-large
 icu:
-- '75'
+- '78'
 libabseil:
 - '20250512'
 libsqlite:
