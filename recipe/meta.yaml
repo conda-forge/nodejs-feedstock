@@ -22,7 +22,7 @@ source:
     - patches/0004-Forward-ceilf-floorf.patch  # [unix]
 
 build:
-  number: 1
+  number: 2
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
