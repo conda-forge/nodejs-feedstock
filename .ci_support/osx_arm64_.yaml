@@ -22,12 +22,10 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
-github_actions_labels:
-- cirun-openstack-cpu-large
 icu:
 - '78'
 libabseil:
-- '20250512'
+- '20260107'
 libsqlite:
 - '3'
 macos_machine:
