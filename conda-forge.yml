@@ -2,6 +2,7 @@ bot:
   abi_migration_branches:
   - 20.x
   - 22.x
+  - 24.x
   automerge: true
 build_platform:
   linux_aarch64: linux_64
