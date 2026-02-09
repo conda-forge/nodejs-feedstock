@@ -42,6 +42,8 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
+        - if: unix
+          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
