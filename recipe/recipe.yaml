@@ -29,7 +29,7 @@ source:
       sha256: b05e7e066f813d35ad3cd9c24eedaee074c012ac7e00071297608fdd2e948ae3
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
