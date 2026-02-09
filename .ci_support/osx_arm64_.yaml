@@ -25,7 +25,7 @@ cxx_compiler_version:
 github_actions_labels:
 - cirun-macos-m4-large
 icu:
-- '75'
+- '78'
 libsqlite:
 - '3'
 macos_machine:
