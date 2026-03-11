@@ -1,4 +1,4 @@
-{% set version = "20.20.0" %}
+{% set version = "20.20.1" %}
 
 # NODE_MODULE_VERSION set in src/node_version.h
 {% set NODE_MODULE_VERSION = 115 %}
@@ -10,11 +10,11 @@ package:
 source:
   # checksums from https://nodejs.org/dist/vX.Y.Z/SHASUMS256.txt.asc
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz  # [unix]
-  sha256: cafc92e90917c17869d982fdff10104c2eb328437ed9bbf03fdda78ebc0accdd  # [unix]
+  sha256: 1b6eaf0fa2b99a19ec682149faa0aabbea5bb7f8af2f44ee6f6491d5ff6a9235  # [unix]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-x64.zip  # [target_platform == "win-64"]
-  sha256: 32f24e1405b113d4e01ad2585c92024df673b6156ef6f43a5469a75bf52c0a5a  # [target_platform == "win-64"]
+  sha256: 499e886ed617abb37d5e3a2b87a3f737e3c673b146361fb5ee70d08d7fdf6d2b  # [target_platform == "win-64"]
   url: https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-win-arm64.zip  # [target_platform == "win-arm64"]
-  sha256: 870693b496d152519af14b30fb1adef47e62233b90aea5e887ea728cd29c037d  # [target_platform == "win-arm64"]
+  sha256: 2de4684a20c98a50bbf0e5cc7cadd94abe6341c0fa3830a49f384deaf4457ff7  # [target_platform == "win-arm64"]
   patches:
     - patches/0001-stop-removing-librt.patch  # [unix]
     - patches/0002-Include-cinttypes-instead-of-inttypes.h.patch  # [unix]
