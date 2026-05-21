@@ -43,10 +43,11 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
+        - ${{ compiler('rust') }}
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
-        - python 3.9.*
+        - python 3.13.*
         - ninja
         - pkg-config
         - sed
@@ -91,7 +92,10 @@ tests:
       - npm install -h
       - npm config get prefix -g
       - if: not win
-        then: test $(echo "console.log(1 + 3)" | node) == 4
+        then:
+          - test $(echo "console.log(1 + 3)" | node) == 4
+          # Temporal support requires rust, thus make sure the toolchain gets picked up.
+          - test $(node -e 'console.log(typeof Temporal)') == object
       - if: osx
         then: test -f $PREFIX/lib/libnode.${{ NODE_MODULE_VERSION }}.dylib
       - if: linux
