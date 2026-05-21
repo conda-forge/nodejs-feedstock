@@ -3,7 +3,7 @@ schema_version: 1
 context:
   version: "26.0.0"
   # NODE_MODULE_VERSION set in src/node_version.h
-  NODE_MODULE_VERSION: 141
+  NODE_MODULE_VERSION: 147
 
 package:
   name: nodejs
@@ -95,7 +95,10 @@ tests:
         then:
           - test $(echo "console.log(1 + 3)" | node) == 4
           # Temporal support requires rust, thus make sure the toolchain gets picked up.
-          - test $(node -e 'console.log(typeof Temporal)') == object
+          # This currently disabled as this doesn't work together with a shared ICU, see also
+          #   - https://github.com/nodejs/node/issues/62676
+          #   - https://github.com/Homebrew/homebrew-core/pull/281707
+          # - test $(node -e 'console.log(typeof Temporal)') == object || (echo "Temporal support not built"; exit 1)
       - if: osx
         then: test -f $PREFIX/lib/libnode.${{ NODE_MODULE_VERSION }}.dylib
       - if: linux
