@@ -1,9 +1,9 @@
 schema_version: 1
 
 context:
-  version: "25.9.0"
+  version: "26.0.0"
   # NODE_MODULE_VERSION set in src/node_version.h
-  NODE_MODULE_VERSION: 141
+  NODE_MODULE_VERSION: 147
 
 package:
   name: nodejs
@@ -14,7 +14,7 @@ source:
   - if: unix
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}.tar.gz
-      sha256: d55d77187039d4cd85c732f76838f44e3be552054473459dfa9cc0eb611ea664
+      sha256: db0b0db9238d93e41a110d6f14bd43984e56475cb7d8e218d1f73b6ad39b71c7
       patches:
         - patches/0001-stop-removing-librt.patch
         - patches/0002-include-obj-name-in-shared-intermediate.patch
@@ -23,11 +23,11 @@ source:
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
-      sha256: 929552b8305effac843ba7b4270c437aefb702fc3fbd73fcd1bffd35d4ac284e
+      sha256: d0418640a36096e00bddb57761aa0b1b98f91904ec4ed2b9dd75cbad723becd7
   - if: target_platform == "win-arm64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-arm64.zip
-      sha256: 6b499bcaf16c86fe1a98c8e2874fd1980b23b5c90ea412983db4392d7e08c36b
+      sha256: 1931cebf3cda89dab7cc5d4d0bf1923b8eff8a4b054b6aaa8904be0c14a070a4
 
 build:
   number: 0
@@ -43,10 +43,12 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
+        # Rust is required for Temporal only, see the comment in the test section.
+        # - ${{ compiler('rust') }}
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
-        - python 3.9.*
+        - python 3.13.*
         - ninja
         - pkg-config
         - sed
@@ -91,7 +93,13 @@ tests:
       - npm install -h
       - npm config get prefix -g
       - if: not win
-        then: test $(echo "console.log(1 + 3)" | node) == 4
+        then:
+          - test $(echo "console.log(1 + 3)" | node) == 4
+          # Temporal support requires rust, thus make sure the toolchain gets picked up.
+          # This currently disabled as this doesn't work together with a shared ICU, see also
+          #   - https://github.com/nodejs/node/issues/62676
+          #   - https://github.com/Homebrew/homebrew-core/pull/281707
+          # - test $(node -e 'console.log(typeof Temporal)') == object || (echo "Temporal support not built"; exit 1)
       - if: osx
         then: test -f $PREFIX/lib/libnode.${{ NODE_MODULE_VERSION }}.dylib
       - if: linux

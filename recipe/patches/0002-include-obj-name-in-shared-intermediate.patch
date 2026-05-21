@@ -1,4 +1,4 @@
-From 6f7aa332a091edb0badc0cd924c8c8ca77a51425 Mon Sep 17 00:00:00 2001
+From 6697515f5e657689c709e13574ec550967f2f15a Mon Sep 17 00:00:00 2001
 From: Min RK <benjaminrk@gmail.com>
 Date: Fri, 19 Feb 2021 11:57:04 +0100
 Subject: [PATCH 2/4] include obj name in shared intermediate
@@ -9,7 +9,7 @@ avoids duplicate ninja rules for v8 used in host and target
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/tools/gyp/pylib/gyp/generator/ninja.py b/tools/gyp/pylib/gyp/generator/ninja.py
-index bc9ddd26..f5e10361 100644
+index 4eac6cdb..00aeda8f 100644
 --- a/tools/gyp/pylib/gyp/generator/ninja.py
 +++ b/tools/gyp/pylib/gyp/generator/ninja.py
 @@ -42,7 +42,7 @@ generator_default_variables = {
