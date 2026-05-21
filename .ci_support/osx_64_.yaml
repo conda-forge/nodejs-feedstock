@@ -32,8 +32,6 @@ macos_machine:
 - x86_64-apple-darwin13.4.0
 openssl:
 - '3.5'
-rust_compiler:
-- rust
 target_platform:
 - osx-64
 zip_keys:
