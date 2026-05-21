@@ -4,7 +4,6 @@ bot:
   - 22.x
   - 24.x
 build_platform:
-  linux_aarch64: linux_64
   win_arm64: win_64
 conda_build:
   pkg_format: '2'
@@ -15,7 +14,7 @@ github:
   branch_name: main
   tooling_branch_name: main
 github_actions:
-  self_hosted: true
+  timeout_minutes: 1080
   triggers:
   - push
   - pull_request
@@ -24,5 +23,6 @@ linter:
   - lint_stdlib
 provider:
   linux_64: github_actions
+  linux_aarch64: github_actions
   osx_arm64: default
 test: native_and_emulated
