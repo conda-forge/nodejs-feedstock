@@ -43,7 +43,8 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
-        - ${{ compiler('rust') }}
+        # Rust is required for Temporal only, see the comment in the test section.
+        # - ${{ compiler('rust') }}
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
