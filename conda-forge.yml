@@ -15,7 +15,6 @@ github:
   branch_name: main
   tooling_branch_name: main
 github_actions:
-  self_hosted: true
   triggers:
   - push
   - pull_request
