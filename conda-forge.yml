@@ -17,4 +17,5 @@ github_actions:
 provider:
   linux_64: github_actions
   linux_aarch64: github_actions
+  osx_arm64: default
 test: native_and_emulated
