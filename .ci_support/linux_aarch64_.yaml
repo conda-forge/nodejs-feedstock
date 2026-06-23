@@ -25,7 +25,7 @@ github_actions_labels:
 icu:
 - '78'
 libabseil:
-- '20260107'
+- '20260526'
 libsqlite:
 - '3'
 openssl:
