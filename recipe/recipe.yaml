@@ -30,7 +30,7 @@ source:
       sha256: 0a738ffd9362003fc905f685b29bec2eca867d2f84f1bc37a70497423a0f7b1e
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
@@ -45,6 +45,8 @@ requirements:
         - ${{ stdlib('c') }}
         # Rust is required for Temporal only, see the comment in the test section.
         # - ${{ compiler('rust') }}
+        - if: unix
+          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
