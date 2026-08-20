@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/libffi
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/ngtcp2/ngtcp2/third-party/libev
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/cares/config
 
 set -exuo pipefail
 
