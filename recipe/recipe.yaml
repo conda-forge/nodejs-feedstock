@@ -29,7 +29,7 @@ source:
       sha256: 8502f4a50b458d4cc38ed8f2001556c2cd239d464920f74017926ccb1e1c157f
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
@@ -42,6 +42,8 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
+        - if: unix
+          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
