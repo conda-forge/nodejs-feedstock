@@ -29,7 +29,7 @@ source:
       sha256: fec025a6da31757e3b6af84c5a1628e9d38442ca99a2161091d78f2fcfa35ef3
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
@@ -45,6 +45,8 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
+        - if: unix
+          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         - python 3.8.*
