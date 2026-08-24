@@ -42,6 +42,9 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
         ppc64le)
            DEST_ARCH=ppc64
            ;;
+        riscv64)
+           DEST_ARCH=riscv64
+           ;;
         *)
            echo "unknown architecture for cross"
            exit 1
