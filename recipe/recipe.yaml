@@ -21,6 +21,7 @@ source:
         - patches/0003-Forward-ceilf-floorf.patch
         - patches/0004-Support-System-abseil-cpp.patch
         - patches/0005-Include-stdlib.h-for-malloc-free-in-bundled-fmt.patch
+        - patches/0006-Guard-V8-JSON-SIMD-path-on-scalar-only-Highway-targe.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip

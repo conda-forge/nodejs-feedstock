@@ -1,0 +1,65 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: conda-forge nodejs-feedstock <noreply@conda-forge.org>
+Date: Mon, 24 Aug 2026 00:00:00 +0000
+Subject: [PATCH 6/6] Guard V8's JSON SIMD path on scalar-only Highway targets
+
+V8's fast JSON stringifier unconditionally instantiates AppendStringSIMD,
+which builds a hw::FixedTag<SrcChar, 16> and therefore needs a Highway
+target that can supply a 16-lane byte vector.
+
+On linux-riscv64 no such target is selected. conda-forge builds with
+-march=rv64imafdc, so there is no V extension and HWY_RVV is unavailable,
+and Highway's fallback EMU128 is disabled by HWY_BROKEN_EMU128, which
+detect_targets.h sets for GCC < 16 (conda-forge pins GCC 15). That leaves
+HWY_SCALAR, where HWY_LANES(T) is 1, and the build fails:
+
+  shared-inl.h:369:27: error: static assertion failed: Too many lanes
+    note: the comparison reduces to '(16 <= 1)'
+  shared-inl.h:234:24: error: static assertion failed: Out of range
+    note: the comparison reduces to '(16 <= 8)'
+  json-stringifier.cc:3401:30: error: no matching function for call to
+    'Set(hwy::N_SCALAR::FixedTag<unsigned char, 16>&, int)'
+
+Wrap the dispatch in "if constexpr" so the SIMD path is only instantiated
+when the static target can satisfy it. AppendStringSWAR is already a
+complete implementation and handles arbitrary lengths, so scalar-only
+targets simply lose the SIMD speedup. Targets that do provide 16-byte
+vectors are unaffected -- the generated assembly is unchanged.
+---
+ deps/v8/src/json/json-stringifier.cc | 22 +++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 3 deletions(-)
+
+--- a/deps/v8/src/json/json-stringifier.cc
++++ b/deps/v8/src/json/json-stringifier.cc
+@@ -3333,9 +3333,28 @@
+ bool FastJsonStringifier<Char>::AppendString(
+     const SrcChar* chars, size_t length,
+     const DisallowGarbageCollection& no_gc) {
+-  constexpr int kUseSimdLengthThreshold = 32;
+-  if (length >= kUseSimdLengthThreshold) {
+-    return AppendStringSIMD(chars, length, no_gc);
++  // AppendStringSIMD builds a hw::FixedTag<SrcChar, 16>, i.e. it requires a
++  // target that can provide a 16-lane byte vector. Highway falls back to
++  // HWY_SCALAR (HWY_LANES(T) == 1) whenever neither a native SIMD target nor
++  // EMU128 is available, which is the case for riscv64 without the V extension
++  // when built with GCC: HWY_RVV is excluded and HWY_BROKEN_EMU128 is set for
++  // GCC < 16, leaving HWY_SCALAR as the static target. Instantiating the SIMD
++  // path there fails to compile:
++  //
++  //   shared-inl.h:369:27: error: static assertion failed: Too many lanes
++  //     note: the comparison reduces to '(16 <= 1)'
++  //   shared-inl.h:234:24: error: static assertion failed: Out of range
++  //     note: the comparison reduces to '(16 <= 8)'
++  //
++  // Only instantiate it when the static target can satisfy it. AppendStringSWAR
++  // below is a complete fallback and already handles arbitrary lengths, so this
++  // costs nothing but throughput on such targets. On every target that does
++  // provide 16-byte vectors the generated code is unchanged.
++  if constexpr (HWY_LANES(SrcChar) >= 16) {
++    constexpr int kUseSimdLengthThreshold = 32;
++    if (length >= kUseSimdLengthThreshold) {
++      return AppendStringSIMD(chars, length, no_gc);
++    }
+   }
+   return AppendStringSWAR(chars, length, 0, 0, no_gc);
+ }
