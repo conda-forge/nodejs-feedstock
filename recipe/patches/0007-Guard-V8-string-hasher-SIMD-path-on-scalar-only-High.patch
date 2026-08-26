@@ -1,0 +1,73 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: conda-forge nodejs-feedstock <noreply@conda-forge.org>
+Date: Mon, 25 Aug 2026 00:00:00 +0000
+Subject: [PATCH 7/7] Guard V8's string hasher SIMD path on scalar-only Highway
+ targets
+
+Companion to the previous patch. V8 has a second unconditional fixed-width
+Highway tag: IsOnly8BitSIMD in string-hasher.cc builds a
+hw::FixedTag<uint16_t, 8>, which also needs a 16-byte vector and so also fails
+on linux-riscv64, where HWY_SCALAR is the static target:
+
+  shared-inl.h:369:27: error: static assertion failed: Too many lanes
+  string-hasher.cc:82:38: error: no matching function for call to
+    'Set(hwy::N_SCALAR::FixedTag<short unsigned int, 8>&, uint16_t)'
+
+The other two Highway users in V8, runtime-regexp.cc and unicode.cc, use
+ScalableTag and are fine on HWY_SCALAR.
+
+IsOnly8BitSIMD is not a template, so its body is always instantiated and the
+"if constexpr" used in json-stringifier.cc would not prevent the error. A
+preprocessor guard is required, and HWY_LANES(T) cannot be used in #if because
+it expands to a sizeof expression; HWY_MAX_BYTES is a plain integer literal per
+target (8 for HWY_SCALAR, >= 16 for everything else), so guard on that instead.
+
+The trailing scalar loop already handles arbitrary lengths and becomes the
+whole implementation on such targets.
+---
+ deps/v8/src/strings/string-hasher.cc | 20 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletions(-)
+
+--- a/deps/v8/src/strings/string-hasher.cc
++++ b/deps/v8/src/strings/string-hasher.cc
+@@ -76,13 +76,31 @@
+ }
+ 
+ bool IsOnly8BitSIMD(const uint16_t* chars, unsigned len) {
++  const uint16_t* end = chars + len;
++// FixedTag<uint16_t, 8> needs a 16-byte vector. Highway falls back to
++// HWY_SCALAR (HWY_MAX_BYTES == 8) whenever neither a native SIMD target nor
++// EMU128 is available, which is the case for riscv64 without the V extension
++// when built with GCC: HWY_RVV is excluded and HWY_BROKEN_EMU128 is set for
++// GCC < 16, leaving HWY_SCALAR as the static target. The tag then fails to
++// compile:
++//
++//   shared-inl.h:369:27: error: static assertion failed: Too many lanes
++//   string-hasher.cc:82:38: error: no matching function for call to
++//     'Set(hwy::N_SCALAR::FixedTag<short unsigned int, 8>&, uint16_t)'
++//
++// Unlike AppendString in json-stringifier.cc this is not a template, so the
++// body is always instantiated and "if constexpr" would not help; and
++// HWY_LANES(T) expands to a sizeof expression, which is not usable in #if.
++// HWY_MAX_BYTES is a plain integer literal per target, so guard on that. The
++// scalar loop below already handles arbitrary lengths and is a complete
++// fallback; targets that do provide 16-byte vectors are unaffected.
++#if HWY_MAX_BYTES >= 16
+   namespace hw = hwy::HWY_NAMESPACE;
+   hw::FixedTag<uint16_t, 8> tag;
+   const size_t stride = hw::Lanes(tag);
+   const auto high_byte_mask = hw::Set(tag, static_cast<uint16_t>(0xFF00));
+   const auto zero = hw::Zero(tag);
+ 
+-  const uint16_t* end = chars + len;
+   while (chars + stride <= end) {
+     const auto data = hw::LoadU(tag, chars);
+     const auto high_bytes = hw::And(data, high_byte_mask);
+@@ -92,6 +110,7 @@
+     }
+     chars += stride;
+   }
++#endif  // HWY_MAX_BYTES >= 16
+   // Handle remaining characters.
+   while (chars < end) {
+     if (*chars > 0xFF) {
