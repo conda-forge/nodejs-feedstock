@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/cares/config
 
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
@@ -33,6 +35,9 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
            ;;
         ppc64le)
            DEST_ARCH=ppc64
+           ;;
+        riscv64)
+           DEST_ARCH=riscv64
            ;;
         *)
            echo "unknown architecture for cross"
