@@ -1,0 +1,56 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: conda-forge nodejs-feedstock <noreply@conda-forge.org>
+Date: Wed, 26 Aug 2026 00:00:00 +0000
+Subject: [PATCH 8/8] Explicitly instantiate FloatMinMaxHelper on RISC-V
+
+MacroAssembler::FloatMinMaxHelper is declared in macro-assembler-riscv.h but
+defined in macro-assembler-riscv.cc, and maglev-ir-riscv.cc calls it directly
+from another translation unit. Within macro-assembler-riscv.cc the only uses
+are the four Float32Max/Min and Float64Max/Min wrappers; at -O3 GCC inlines all
+of them and discards the out-of-line instantiations, so nothing satisfies
+maglev's references and the link of node_mksnapshot fails:
+
+  riscv64-conda-linux-gnu-ld: maglev-ir-riscv.o: in function
+    'v8::internal::maglev::Float64Min::GenerateCode(...)':
+  undefined reference to 'void
+    v8::internal::MacroAssembler::FloatMinMaxHelper<double>(
+      v8::internal::FPURegister, v8::internal::FPURegister,
+      v8::internal::FPURegister, v8::internal::MaxMinKind)'
+
+Add explicit instantiation definitions for both specializations so they are
+always emitted with external linkage. This affects the RISC-V backend only.
+---
+ deps/v8/src/codegen/riscv/macro-assembler-riscv.cc | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+--- a/deps/v8/src/codegen/riscv/macro-assembler-riscv.cc
++++ b/deps/v8/src/codegen/riscv/macro-assembler-riscv.cc
+@@ -7245,6 +7245,28 @@
+   bind(&done);
+ }
+ 
++// FloatMinMaxHelper is declared in macro-assembler-riscv.h but defined here,
++// and maglev-ir-riscv.cc calls it directly from another translation unit. The
++// implicit instantiations produced by the four wrappers below are not enough:
++// the compiler inlines every use within this file and is free to discard the
++// out-of-line copies, which leaves maglev's references undefined at link time:
++//
++//   maglev-ir-riscv.o: in function 'v8::internal::maglev::Float64Min::GenerateCode(...)'
++//   undefined reference to 'void v8::internal::MacroAssembler::FloatMinMaxHelper<double>(
++//       v8::internal::FPURegister, v8::internal::FPURegister,
++//       v8::internal::FPURegister, v8::internal::MaxMinKind)'
++//
++// Instantiate both specializations explicitly so the definitions are always
++// emitted with external linkage.
++template void MacroAssembler::FloatMinMaxHelper<float>(FPURegister dst,
++                                                       FPURegister src1,
++                                                       FPURegister src2,
++                                                       MaxMinKind kind);
++template void MacroAssembler::FloatMinMaxHelper<double>(FPURegister dst,
++                                                        FPURegister src1,
++                                                        FPURegister src2,
++                                                        MaxMinKind kind);
++
+ void MacroAssembler::Float32Max(FPURegister dst, FPURegister src1,
+                                 FPURegister src2) {
+   ASM_CODE_COMMENT(this);

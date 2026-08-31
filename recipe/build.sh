@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/libffi
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/ngtcp2/ngtcp2/third-party/libev
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./deps/cares/config
 
 set -exuo pipefail
 
@@ -37,6 +41,9 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
            ;;
         ppc64le)
            DEST_ARCH=ppc64
+           ;;
+        riscv64)
+           DEST_ARCH=riscv64
            ;;
         *)
            echo "unknown architecture for cross"

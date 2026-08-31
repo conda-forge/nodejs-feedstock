@@ -20,6 +20,10 @@ source:
         - patches/0002-include-obj-name-in-shared-intermediate.patch
         - patches/0003-Forward-ceilf-floorf.patch
         - patches/0004-Support-System-abseil-cpp.patch
+        - patches/0005-Include-stdlib.h-for-malloc-free-in-bundled-fmt.patch
+        - patches/0006-Guard-V8-JSON-SIMD-path-on-scalar-only-Highway-targe.patch
+        - patches/0007-Guard-V8-string-hasher-SIMD-path-on-scalar-only-High.patch
+        - patches/0008-Explicitly-instantiate-FloatMinMaxHelper-on-RISC-V.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
@@ -30,7 +34,7 @@ source:
       sha256: 0a738ffd9362003fc905f685b29bec2eca867d2f84f1bc37a70497423a0f7b1e
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
@@ -45,6 +49,8 @@ requirements:
         - ${{ stdlib('c') }}
         # Rust is required for Temporal only, see the comment in the test section.
         # - ${{ compiler('rust') }}
+        - if: unix
+          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ compiler('cxx') }}
         # c.f. https://github.com/nodejs/node/blob/v24.3.0/pyproject.toml#L10
