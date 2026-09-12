@@ -223,6 +223,7 @@ Feedstock Maintainers
 =====================
 
 * [@blink1073](https://github.com/blink1073/)
+* [@krassowski](https://github.com/krassowski/)
 * [@minrk](https://github.com/minrk/)
 * [@msarahan](https://github.com/msarahan/)
 * [@pelson](https://github.com/pelson/)
