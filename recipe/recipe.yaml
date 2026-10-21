@@ -20,10 +20,10 @@ source:
         - patches/0002-include-obj-name-in-shared-intermediate.patch
         - patches/0003-Forward-ceilf-floorf.patch
         - patches/0004-Support-System-abseil-cpp.patch
-        - patches/0005-Include-stdlib.h-for-malloc-free-in-bundled-fmt.patch
         - patches/0006-Guard-V8-JSON-SIMD-path-on-scalar-only-Highway-targe.patch
         - patches/0007-Guard-V8-string-hasher-SIMD-path-on-scalar-only-High.patch
         - patches/0008-Explicitly-instantiate-FloatMinMaxHelper-on-RISC-V.patch
+        - patches/0009-Guard-BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
