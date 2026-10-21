@@ -69,12 +69,14 @@ export LDFLAGS_host="$(echo $LDFLAGS | sed s@${PREFIX}@${BUILD_PREFIX}@g)"
 
 echo "sysroot: ${CONDA_BUILD_SYSROOT:-unset}"
 
+# Use the bundled brotli: node >= 24.22.1 relies on the
+# BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH error code which is not yet part of
+# the released brotli 1.2.0 that conda-forge builds.
 ./configure \
     --ninja \
     --prefix=${PREFIX} \
     --without-node-snapshot \
     --shared \
-    --shared-brotli \
     --shared-cares \
     --shared-libuv \
     --shared-nghttp2 \
