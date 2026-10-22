@@ -12,6 +12,14 @@ cp $RECIPE_DIR/abseil.gyp tools/v8_gypfiles/abseil.gyp
 # scrub -std=... flag which conflicts with builds
 export CXXFLAGS=$(echo ${CXXFLAGS:-} | sed -E 's@\-std=[^ ]*@@g')
 
+# The copy of brotli vendored by node defines
+# BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH (-17), while the brotli 1.2.0
+# release we link against still reserves that error code. Only reference the
+# constant when the system headers provide it.
+if grep -q BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH $PREFIX/include/brotli/decode.h; then
+    export CXXFLAGS="${CXXFLAGS} -DNODE_HAVE_BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH"
+fi
+
 if [[ "$target_platform" == osx-* ]]; then
     # unset macosx-version-min hardcoded in clang CPPFLAGS
     export CPPFLAGS="$(echo ${CPPFLAGS:-} | sed -E 's@\-mmacosx\-version\-min=[^ ]*@@g')"

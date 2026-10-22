@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: conda-forge nodejs-feedstock <noreply@conda-forge.org>
+Date: Wed, 21 Oct 2026 00:00:00 +0000
+Subject: [PATCH 9/9] Only expose BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH when
+ available
+
+conda-forge's brotli 1.2.0 does not define this error code (the -17
+BrotliDecoderErrorCode is still reserved in that release), while the
+brotli copy vendored by node already does. Since we link against the
+system brotli, referencing the constant unconditionally fails to
+compile:
+
+  src/node_zlib.cc:2271:32: error: 'BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH'
+      was not declared in this scope
+
+build.sh defines NODE_HAVE_BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH when
+the system header provides the constant, so it is still exposed to JS
+whenever the linked brotli supports it.
+---
+diff --git a/src/node_zlib.cc b/src/node_zlib.cc
+index 3cb736c..f257a1a 100644
+--- a/src/node_zlib.cc
++++ b/src/node_zlib.cc
+@@ -2268,7 +2268,13 @@ void DefineZlibConstants(Local<Object> target) {
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_FORMAT_PADDING_1);
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_FORMAT_PADDING_2);
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_FORMAT_DISTANCE);
++  // BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH is not part of the brotli 1.2.0
++  // release that conda-forge ships (the -17 error code is still reserved
++  // there), while the copy of brotli vendored by node already defines it.
++  // build.sh only sets this define when the system headers provide it.
++#ifdef NODE_HAVE_BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH);
++#endif
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_DICTIONARY_NOT_SET);
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_INVALID_ARGUMENTS);
+   NODE_DEFINE_CONSTANT(target, BROTLI_DECODER_ERROR_ALLOC_CONTEXT_MODES);
+-- 
+2.43.0
+
