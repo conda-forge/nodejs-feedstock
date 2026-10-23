@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Uwe Korn <uwe.korn@quantco.com>
+Date: Fri, 23 Oct 2026 00:00:00 +0000
+Subject: [PATCH 4/4] Fix riscv64 runtime call layout without dispatch handle
+
+Node 24.22.1's V8 update changed the riscv64 runtime-call sequence so
+that the dispatch handle is pushed conditionally under
+V8_JS_LINKAGE_INCLUDES_DISPATCH_HANDLE.  However, it also dropped the
+duplicate target-function stack slot that is still required when the
+dispatch handle is not part of the JS linkage (i.e. when V8 is built
+without the sandbox, which is the conda-forge configuration).
+
+Restore the previous stack layout for that configuration.  Without this,
+generated riscv64 code crashes during startup (e.g. `node -h`).
+
+---
+ deps/v8/src/codegen/riscv/macro-assembler-riscv.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/deps/v8/src/codegen/riscv/macro-assembler-riscv.cc b/deps/v8/src/codegen/riscv/macro-assembler-riscv.cc
+index 0000000000..0000000000 100644
+--- a/deps/v8/src/codegen/riscv/macro-assembler-riscv.cc
++++ b/deps/v8/src/codegen/riscv/macro-assembler-riscv.cc
+@@ -200,9 +200,12 @@
+     static_assert(kJSDispatchHandleShift > 0);
+     AssertSmi(kJavaScriptCallDispatchHandleRegister);
+     Push(kJavaScriptCallDispatchHandleRegister);
+-#endif
+     Push(kJavaScriptCallTargetRegister, kJavaScriptCallNewTargetRegister,
+          kJavaScriptCallArgCountRegister);
++#else
++    Push(kJavaScriptCallTargetRegister, kJavaScriptCallNewTargetRegister,
++         kJavaScriptCallArgCountRegister, kJavaScriptCallTargetRegister);
++#endif
+ 
+     CallRuntime(function_id, 1);
+     // Use the return value before restoring a0
+-- 
+2.51.0
