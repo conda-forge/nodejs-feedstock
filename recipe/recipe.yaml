@@ -19,6 +19,7 @@ source:
         - patches/0001-stop-removing-librt.patch
         - patches/0002-include-obj-name-in-shared-intermediate.patch
         - patches/0003-Forward-ceilf-floorf.patch
+        - patches/0004-Fix-riscv64-runtime-call-without-dispatch-handle.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
