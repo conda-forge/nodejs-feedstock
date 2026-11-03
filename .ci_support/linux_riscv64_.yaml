@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 c_ares:
 - '1'
 c_compiler:
