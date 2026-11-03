@@ -23,7 +23,7 @@ cxx_compiler_version:
 icu:
 - '78'
 libabseil:
-- '20260526'
+- '20260817'
 libsqlite:
 - '3'
 macos_machine:

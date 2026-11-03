@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 brotli:
 - '1.2'
 c_ares:
@@ -25,7 +27,7 @@ github_actions_labels:
 icu:
 - '78'
 libabseil:
-- '20260526'
+- '20260817'
 libsqlite:
 - '3'
 openssl:
