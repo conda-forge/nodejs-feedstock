@@ -24,6 +24,7 @@ source:
         - patches/0007-Guard-V8-string-hasher-SIMD-path-on-scalar-only-High.patch
         - patches/0008-Explicitly-instantiate-FloatMinMaxHelper-on-RISC-V.patch
         - patches/0009-Guard-BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH.patch
+        - patches/0010-Discard-supplementary-case-equivalents-in-legacy-mode.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
