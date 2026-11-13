@@ -23,7 +23,7 @@ docker_image:
 github_actions_labels:
 - namespace-profile-8cpu-on-linux-aarch64
 icu:
-- '78'
+- '79'
 libsqlite:
 - '3'
 openssl:
