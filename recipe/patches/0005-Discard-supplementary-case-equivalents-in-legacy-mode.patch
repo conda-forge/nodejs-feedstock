@@ -1,0 +1,105 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: conda-forge nodejs-feedstock <noreply@conda-forge.org>
+Date: Fri, 13 Nov 2026 00:00:00 +0000
+Subject: [PATCH 5/5] Discard supplementary case equivalents in legacy mode
+
+Unicode 18 (ICU 79) adds U+1DF95 LATIN SMALL LIGATURE LONG S WITH
+DESCENDER S, which case-folds to U+00DF LATIN SMALL LETTER SHARP S. This
+creates the first case-equivalence class that spans the BMP and the
+supplementary planes: {U+00DF, U+1E9E, U+1DF95}.
+
+The build-time generator deps/v8/src/regexp/gen-regexp-special-case.cc
+closes over every BMP character and feeds the result into
+RegExpCaseFolding::Canonicalize, which asserts that its argument is a
+UTF-16 code unit. With the system ICU 79 the closure of U+00DF now
+contains U+1DF95, so building nodejs against ICU 79 aborts with:
+
+  FAILED: obj/gen/src/regexp/special-case.cc
+  # Fatal error in , line 0
+  # Check failed: ch <= 0xffff.
+  ninja: build stopped: subcommand failed.
+
+Apply the same filtering to the two runtime non-unicode case closures:
+legacy ignoreCase matching compares UTF-16 code units, so a supplementary
+code point can never match a BMP character, and it would trip the same
+CHECK in GetCaseIndependentLetters.
+
+This is the crash-preventing subset of the upstream V8 fix
+https://github.com/v8/v8/commit/f607706154eabc4a949628a88b38dbe95cd2274c
+("Handle supplementary case equivalents of BMP characters"). IgnoreSet and
+SpecialAddSet are unchanged with respect to ICU 78; the additional
+SupplementaryEquivalentsSet desugaring that upstream adds for unicode-mode
+matching of these characters is not needed to build and is left out.
+
+diff --git a/deps/v8/src/regexp/gen-regexp-special-case.cc b/deps/v8/src/regexp/gen-regexp-special-case.cc
+index 86f6b21..20be78b 100644
+--- a/deps/v8/src/regexp/gen-regexp-special-case.cc
++++ b/deps/v8/src/regexp/gen-regexp-special-case.cc
+@@ -16,6 +16,18 @@ namespace internal {
+ static const base::uc32 kSurrogateStart = 0xd800;
+ static const base::uc32 kSurrogateEnd = 0xdfff;
+ static const base::uc32 kNonBmpStart = 0x10000;
++static const base::uc32 kMaxCodePoint = 0x10ffff;
++
++// Removes supplementary code points from |set|. Since Unicode 18 the case
++// closure of a BMP character can contain supplementary code points: U+1DF95
++// LATIN SMALL LIGATURE LONG S WITH DESCENDER S case-folds to U+00DF LATIN
++// SMALL LETTER SHARP S. Non-unicode ignoreCase matching compares UTF-16 code
++// units, so such a code point never matches a BMP character and must not be
++// passed to RegExpCaseFolding::Canonicalize, which requires a UTF-16 code
++// unit.
++void RemoveSupplementary(icu::UnicodeSet& set) {
++  set.remove(kNonBmpStart, kMaxCodePoint);
++}
+ 
+ // The following code generates "src/regexp/special-case.cc".
+ void PrintSet(std::ofstream& out, const char* name,
+@@ -63,6 +75,7 @@ void PrintSpecial(std::ofstream& out) {
+     }
+     current.set(i, i);
+     current.closeOver(USET_CASE_INSENSITIVE);
++    RemoveSupplementary(current);
+ 
+     // Check to see if all characters in the case-folding equivalence
+     // class as defined by UnicodeSet::closeOver all map to the same
+@@ -112,6 +125,7 @@ void PrintSpecial(std::ofstream& out) {
+       UChar32 canonical = RegExpCaseFolding::Canonicalize(c);
+       current.set(c, c);
+       current.closeOver(USET_CASE_INSENSITIVE);
++      RemoveSupplementary(current);
+       current.removeAll(ignore);
+       for (int32_t j = 0; j < current.getRangeCount(); j++) {
+         for (UChar32 c2 = current.getRangeStart(j);
+diff --git a/deps/v8/src/regexp/regexp-compiler-tonode.cc b/deps/v8/src/regexp/regexp-compiler-tonode.cc
+index d021885..4959b2d 100644
+--- a/deps/v8/src/regexp/regexp-compiler-tonode.cc
++++ b/deps/v8/src/regexp/regexp-compiler-tonode.cc
+@@ -1489,6 +1489,10 @@ void CharacterRange::AddCaseEquivalents(Isolate* isolate, Zone* zone,
+   icu::UnicodeSet already_added(others);
+   others.removeAll(RegExpCaseFolding::IgnoreSet());
+   others.closeOver(USET_CASE_INSENSITIVE);
++  // Since Unicode 18 the case closure can contain supplementary code points
++  // (U+1DF95 case-folds to U+00DF). Legacy case-insensitive matching compares
++  // UTF-16 code units, so those cannot take part in a character class here.
++  others.remove(0x10000, 0x10ffff);
+   others.removeAll(RegExpCaseFolding::IgnoreSet());
+   others.removeAll(already_added);
+ 
+diff --git a/deps/v8/src/regexp/regexp-compiler.cc b/deps/v8/src/regexp/regexp-compiler.cc
+index 0bd775d..421ce4e 100644
+--- a/deps/v8/src/regexp/regexp-compiler.cc
++++ b/deps/v8/src/regexp/regexp-compiler.cc
+@@ -778,6 +778,13 @@ int GetCaseIndependentLetters(Isolate* isolate, base::uc16 character,
+   set.add(character);
+   set = set.closeOver(unicode ? USET_SIMPLE_CASE_INSENSITIVE
+                               : USET_CASE_INSENSITIVE);
++  if (!unicode) {
++    // Since Unicode 18, the case closure of a BMP character can contain
++    // supplementary code points (U+1DF95 case-folds to U+00DF). Legacy
++    // case-insensitive matching compares UTF-16 code units, so such a code
++    // point can never match and is not a valid argument to Canonicalize.
++    set.remove(0x10000, 0x10ffff);
++  }
+ 
+   UChar32 canon = 0;
+   if (in_special_add_set && !unicode) {
