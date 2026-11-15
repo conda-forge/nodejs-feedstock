@@ -19,7 +19,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '21'
 icu:
-- '78'
+- '79'
 libsqlite:
 - '3'
 macos_machine:

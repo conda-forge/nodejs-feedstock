@@ -20,6 +20,7 @@ source:
         - patches/0002-include-obj-name-in-shared-intermediate.patch
         - patches/0003-Forward-ceilf-floorf.patch
         - patches/0004-Fix-riscv64-runtime-call-without-dispatch-handle.patch
+        - patches/0005-Discard-supplementary-case-equivalents-in-legacy-mode.patch
   - if: target_platform == "win-64"
     then:
       url: https://nodejs.org/dist/v${{ version }}/node-v${{ version }}-win-x64.zip
@@ -30,7 +31,7 @@ source:
       sha256: b3cc74a295b39d4f273271e96f58c06dd2b35757ca12abec64c7d0598b434f14
 
 build:
-  number: 0
+  number: 1
   # Prefix replacement breaks in the binary embedded configurations.
   prefix_detection:
     ignore_binary_files: true
