@@ -21,7 +21,7 @@ docker_image:
 github_actions_labels:
 - namespace-profile-16cpu-on-linux-64
 icu:
-- '78'
+- '79'
 openssl:
 - '3.5'
 target_platform:
