@@ -5,7 +5,7 @@ c_ares:
 c_compiler:
 - clang
 c_compiler_version:
-- '21'
+- '22'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -17,7 +17,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '21'
+- '22'
 icu:
 - '79'
 libsqlite:
@@ -34,4 +34,4 @@ zip_keys:
 zlib:
 - '1'
 zstd:
-- '1.5'
+- '1.6'
