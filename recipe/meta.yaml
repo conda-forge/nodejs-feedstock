@@ -23,7 +23,7 @@ source:
     - patches/0005-Discard-supplementary-case-equivalents-in-legacy-mode.patch  # [unix]
 
 build:
-  number: 4
+  number: 5
   # Prefix replacement breaks in the binary embedded configurations.
   detect_binary_files_with_prefix: false
   run_exports:
